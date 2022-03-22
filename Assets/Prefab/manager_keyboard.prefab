@@ -45,4 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyboard_input: {fileID: 11400000, guid: 57c058e30000e478d8d1ac4137a2b9d2, type: 2}
   keyboard_submit: {fileID: 11400000, guid: 9a91a8293ca9444d681db282b6b7dca5, type: 2}
-  keyboard_height: {fileID: 11400000, guid: ea09d4b8ccd6a4dfebcb2140b176dd23, type: 2}
+  keyboard_height: {fileID: 11400000, guid: 1e278055fbc2a4c71874844d9a227207, type: 2}

@@ -11,7 +11,7 @@ public class KeyboardManager : MonoBehaviour
 #region Fields
     [ BoxGroup( "Shared" ) ] public SharedStringNotifier keyboard_input;
     [ BoxGroup( "Shared" ) ] public StringGameEvent keyboard_submit;
-    [ BoxGroup( "Shared" ) ] public SharedFloatNotifier keyboard_height;
+    [ BoxGroup( "Shared" ) ] public SharedFloat keyboard_height;
 
     // Private \\
     private TouchScreenKeyboard keyboard;
@@ -35,12 +35,12 @@ public class KeyboardManager : MonoBehaviour
     {
 		updateMethod();
 
-		keyboard_height.SharedValue = TouchScreenKeyboard.area.height;
+		keyboard_height.sharedValue = TouchScreenKeyboard.area.height;
 	}
 #endregion
 
 #region API
-    public void OpenAndCreate()
+    public void Open()
     {
 		keyboard = TouchScreenKeyboard.Open( null, TouchScreenKeyboardType.Default, false, false, false, false, null, GameSettings.Instance.keyboard_max_characterLimit );
 		updateMethod = OnUpdate_KeyboardOpen;
