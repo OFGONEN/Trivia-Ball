@@ -33,9 +33,24 @@ public class Bar : MonoBehaviour
 #endregion
 
 #region API
+    [ Button() ]
     public void StartMovement()
     {
 		updateMethod = Movement;
+	}
+
+    public void BallCollided( Collision collision )
+    {
+        var listener = collision.gameObject.GetComponent< CollisionListener >();
+		var ball = listener.AttachedComponent; // listener.AttachedComponent as Ball
+
+		// ball.Collided( this );
+	}
+
+    [ Button() ]
+    public void AddForce( float force )
+    {
+		movement_force += force;
 	}
 #endregion
 
@@ -55,11 +70,6 @@ public class Bar : MonoBehaviour
 
 #region Editor Only
 #if UNITY_EDITOR
-    [ Button() ]
-    private void AddForce( float force )
-    {
-		movement_force += force;
-	}
 #endif
 #endregion
 }
