@@ -39,6 +39,8 @@ public class Ball : MonoBehaviour
 #region API
     public void Spawn( Vector3 position, float direction, int health, float power, Color color )
     {
+		gameObject.SetActive( true );
+
 		transform.position    = position;
 		transform.eulerAngles = Vector3.forward * direction;
 

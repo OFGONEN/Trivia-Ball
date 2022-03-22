@@ -31,6 +31,7 @@ namespace FFStudio
         [ BoxGroup( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
         [ BoxGroup( "Bar" ) ] public float bar_movement_drag;
+        [ BoxGroup( "Bar" ) ] public float bar_width;
 
 		[ BoxGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ BoxGroup( "Ball" ) ] public bool ball_spawn_trigger;
