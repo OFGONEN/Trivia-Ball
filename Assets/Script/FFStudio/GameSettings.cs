@@ -32,7 +32,13 @@ namespace FFStudio
 
         [ BoxGroup( "Bar" ) ] public float bar_movement_drag;
 
-        [ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
+		[ BoxGroup( "Ball" ), Layer ] public int ball_spawn_layer;
+		[ BoxGroup( "Ball" ) ] public bool ball_spawn_trigger;
+		[ BoxGroup( "Ball" ) ] public Color ball_health_color;
+		[ BoxGroup( "Ball" ) ] public float ball_launch_power;
+		[ BoxGroup( "Ball" ) ] public float ball_launch_power_torque;
+
+		[ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 
         [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_duration;

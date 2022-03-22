@@ -14,10 +14,12 @@ namespace FFStudio
 
 
 		[ BoxGroup( "Pool" ) ] public Pool_UIPopUpText pool_UIPopUpText;
+		[ BoxGroup( "Pool" ) ] public Pool_Ball pool_ball;
 
 		private void Awake()
 		{
 			pool_UIPopUpText.InitPool( transform, true );
+			pool_ball.InitPool( transform, true );
 		}
 #endregion
 	}
