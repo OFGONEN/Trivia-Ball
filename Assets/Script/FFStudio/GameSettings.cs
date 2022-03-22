@@ -35,6 +35,8 @@ namespace FFStudio
 		[ BoxGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ BoxGroup( "Ball" ) ] public bool ball_spawn_trigger;
 		[ BoxGroup( "Ball" ) ] public Color ball_health_color;
+		[ BoxGroup( "Ball" ) ] public float ball_launch_power;
+		[ BoxGroup( "Ball" ) ] public float ball_launch_power_torque;
 
 		[ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 

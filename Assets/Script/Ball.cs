@@ -13,7 +13,7 @@ public class Ball : MonoBehaviour
 
     // Private Fields \\
     private int ball_health;
-    private int ball_health_current;
+    [ ShowInInspector, ReadOnly ] private int ball_health_current;
     private float ball_direction;
     private float ball_power;
     private Color ball_color;
@@ -52,6 +52,12 @@ public class Ball : MonoBehaviour
 		ball_power          = power;
 		ball_direction      = direction;
 		ball_color          = color;
+	}
+
+    public void Launch()
+    {
+		ball_rigidbody.AddForce( transform.forward * GameSettings.Instance.ball_launch_power, ForceMode.Impulse);
+        ball_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.ball_launch_power_torque, ForceMode.Impulse );
 	}
 
     public void OnCollision_Bar( Bar bar )

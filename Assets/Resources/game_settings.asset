@@ -27,6 +27,8 @@ MonoBehaviour:
   ball_spawn_layer: 30
   ball_spawn_trigger: 1
   ball_health_color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
+  ball_launch_power: 1
+  ball_launch_power_torque: 1
   keyboard_max_characterLimit: 30
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1
