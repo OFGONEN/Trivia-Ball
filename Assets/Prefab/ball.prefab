@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cd577597b9a1284c823b10cfe9eee52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
   ball_spawn_layer: 31
   ball_spawn_trigger: 1
 --- !u!54 &6759183699175186187

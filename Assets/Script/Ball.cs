@@ -9,8 +9,7 @@ using Sirenix.OdinInspector;
 public class Ball : MonoBehaviour
 {
 #region Fields
-    [ BoxGroup( "Spawn" ), Layer ] public int ball_spawn_layer;
-    [ BoxGroup( "Spawn" ) ] public bool ball_spawn_trigger;
+    [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
 
     // Private Fields \\
     private int ball_health;
@@ -70,8 +69,11 @@ public class Ball : MonoBehaviour
 #region Implementation
     private void DeSpawn()
     {
+		ball_rigidbody.velocity = Vector3.zero;
+		ball_rigidbody.angularVelocity = Vector3.zero;
 
-    }
+		pool_ball.ReturnEntity( this );
+	}
 #endregion
 
 #region Editor Only
