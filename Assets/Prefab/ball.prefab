@@ -47,8 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
-  ball_spawn_layer: 31
-  ball_spawn_trigger: 1
 --- !u!54 &6759183699175186187
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -89,8 +87,9 @@ GameObject:
   - component: {fileID: 5795988672927355645}
   - component: {fileID: 6713684097516662528}
   - component: {fileID: 2092033888932126426}
+  - component: {fileID: 9176525494002334610}
   m_Layer: 31
-  m_Name: Sphere
+  m_Name: gfx
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,3 +159,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9176525494002334610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4681821476284009451}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61403d1aaad9442128114808f0675bea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0, b: 0, a: 0}

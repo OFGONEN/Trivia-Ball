@@ -21,6 +21,7 @@ public class Ball : MonoBehaviour
     // Components
     private Rigidbody ball_rigidbody;
     private Collider ball_collider;
+    private ColorSetter ball_color_setter;
 #endregion
 
 #region Properties
@@ -29,9 +30,10 @@ public class Ball : MonoBehaviour
 #region Unity API
     private void Awake()
     {
-        ball_rigidbody = GetComponent< Rigidbody >();
-        ball_collider  = GetComponent< Collider >();
-    }
+        ball_rigidbody    = GetComponent< Rigidbody >();
+        ball_collider     = GetComponent< Collider >();
+        ball_color_setter = GetComponentInChildren< ColorSetter >();
+	}
 #endregion
 
 #region API
@@ -42,6 +44,8 @@ public class Ball : MonoBehaviour
 
 		gameObject.layer        = GameSettings.Instance.ball_spawn_layer;
 		ball_collider.isTrigger = GameSettings.Instance.ball_spawn_trigger;
+
+		ball_color_setter.SetColor( color );
 
 		ball_health         = health;
 		ball_health_current = health;
@@ -58,6 +62,8 @@ public class Ball : MonoBehaviour
 			GameSettings.Instance.ball_health_color,
 			Mathf.InverseLerp( ball_health, 0, ball_health_current ) 
         );
+
+		ball_color_setter.SetColor( newColor );
 
 		bar.Push( ball_direction * ball_power );
 
