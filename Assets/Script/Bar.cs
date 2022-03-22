@@ -33,7 +33,6 @@ public class Bar : MonoBehaviour
 #endregion
 
 #region API
-    [ Button() ]
     public void StartMovement()
     {
 		updateMethod = Movement;
@@ -41,14 +40,11 @@ public class Bar : MonoBehaviour
 
     public void BallCollided( Collision collision )
     {
-        var listener = collision.gameObject.GetComponent< CollisionListener >();
-		var ball = listener.AttachedComponent; // listener.AttachedComponent as Ball
-
-		// ball.Collided( this );
+		var ball = collision.gameObject.GetComponentInParent< Ball >();
+		ball.OnCollision_Bar( this );
 	}
 
-    [ Button() ]
-    public void AddForce( float force )
+    public void Push( float force )
     {
 		movement_force += force;
 	}

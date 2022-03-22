@@ -3,6 +3,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using FFStudio;
 using Sirenix.OdinInspector;
 
 public class Ball : MonoBehaviour
@@ -13,6 +14,7 @@ public class Ball : MonoBehaviour
 
     // Private Fields \\
     private int ball_health;
+    private float ball_direction;
     private float ball_power;
     
     // Components
@@ -43,9 +45,22 @@ public class Ball : MonoBehaviour
 		ball_health = health;
 		ball_power  = power;
 	}
+
+    public void OnCollision_Bar( Bar bar )
+    {
+		ball_health -= 1;
+		bar.Push( ball_direction * ball_power );
+
+        if( ball_health <= 0 )
+            DeSpawn();
+	}
 #endregion
 
 #region Implementation
+    private void DeSpawn()
+    {
+
+    }
 #endregion
 
 #region Editor Only
