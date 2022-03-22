@@ -23,5 +23,6 @@ MonoBehaviour:
   ui_PopUp_height: 1
   ui_PopUp_duration: 0.75
   swipeThreshold: 2
+  keyboard_max_characterLimit: 30
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1
