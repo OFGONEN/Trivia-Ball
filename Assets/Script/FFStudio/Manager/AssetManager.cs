@@ -18,8 +18,8 @@ namespace FFStudio
 
 		private void Awake()
 		{
-			pool_UIPopUpText.InitPool( transform, true );
-			pool_ball.InitPool( transform, true );
+			pool_UIPopUpText.InitPool( transform, false );
+			pool_ball.InitPool( transform, false );
 		}
 #endregion
 	}
