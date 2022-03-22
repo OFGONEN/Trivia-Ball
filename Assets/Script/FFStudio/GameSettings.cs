@@ -30,6 +30,8 @@ namespace FFStudio
 		[ BoxGroup( "UI Settings" ), Tooltip( "Pop Up Text float duration"                       ) ] public float ui_PopUp_duration;
         [ BoxGroup( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
 
+        [ BoxGroup( "Bar" ) ] public float bar_movement_drag;
+
         [ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 
         [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_height;
