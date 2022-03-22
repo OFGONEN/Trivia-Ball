@@ -41,8 +41,8 @@ public class Ball : MonoBehaviour
 		transform.position    = position;
 		transform.eulerAngles = Vector3.forward * direction;
 
-		gameObject.layer        = ball_spawn_layer;
-		ball_collider.isTrigger = ball_spawn_trigger;
+		gameObject.layer        = GameSettings.Instance.ball_spawn_layer;
+		ball_collider.isTrigger = GameSettings.Instance.ball_spawn_trigger;
 
 		ball_health         = health;
 		ball_health_current = health;
