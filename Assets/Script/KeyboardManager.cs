@@ -42,7 +42,7 @@ public class KeyboardManager : MonoBehaviour
 #region API
     public void Open()
     {
-		keyboard = TouchScreenKeyboard.Open( null, TouchScreenKeyboardType.Default, false, false, false, false, null, GameSettings.Instance.keyboard_max_characterLimit );
+		keyboard = TouchScreenKeyboard.Open( null, TouchScreenKeyboardType.ASCIICapable, false, false, false, false, null, GameSettings.Instance.keyboard_max_characterLimit );
 		updateMethod = OnUpdate_KeyboardOpen;
 
 		ClearKeyboardInput();
@@ -71,7 +71,7 @@ public class KeyboardManager : MonoBehaviour
 
         if( keyboard.status == TouchScreenKeyboard.Status.Done )
         {
-			keyboard_submit.Raise( keyboard.text );
+			keyboard_submit.Raise( keyboard.text.RemoveChar( ' ' ) );
 			ClearKeyboardInput();
 
 			keyboard = TouchScreenKeyboard.Open( null, TouchScreenKeyboardType.Default, false, false, false, false, null, 100 );
