@@ -14,8 +14,10 @@ public class Ball : MonoBehaviour
 
     // Private Fields \\
     private int ball_health;
+    private int ball_health_current;
     private float ball_direction;
     private float ball_power;
+    private Color ball_color;
     
     // Components
     private Rigidbody ball_rigidbody;
@@ -42,16 +44,25 @@ public class Ball : MonoBehaviour
 		gameObject.layer        = ball_spawn_layer;
 		ball_collider.isTrigger = ball_spawn_trigger;
 
-		ball_health = health;
-		ball_power  = power;
+		ball_health         = health;
+		ball_health_current = health;
+		ball_power          = power;
+		ball_direction      = direction;
+		ball_color          = color;
 	}
 
     public void OnCollision_Bar( Bar bar )
     {
-		ball_health -= 1;
+		ball_health_current -= 1;
+
+		var newColor = Color.Lerp( ball_color,
+			GameSettings.Instance.ball_health_color,
+			Mathf.InverseLerp( ball_health, 0, ball_health_current ) 
+        );
+
 		bar.Push( ball_direction * ball_power );
 
-        if( ball_health <= 0 )
+        if( ball_health_current <= 0 )
             DeSpawn();
 	}
 #endregion

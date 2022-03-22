@@ -32,6 +32,8 @@ namespace FFStudio
 
         [ BoxGroup( "Bar" ) ] public float bar_movement_drag;
 
+        [ BoxGroup( "Ball" ) ] public Color ball_health_color;
+
         [ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 
         [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_height;
