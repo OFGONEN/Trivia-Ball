@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 using Sirenix.OdinInspector;
 using System.IO;
 using System.Collections;
+using System.Collections.Generic;
 
 namespace FFStudio
 {
@@ -14,6 +15,10 @@ namespace FFStudio
 		[ BoxGroup( "Setup" ), ValueDropdown( "SceneList" ), LabelText( "Scene Index" ) ] public int scene_index;
         [ BoxGroup( "Setup" ), LabelText( "Override As Active Scene" ) ] public bool scene_overrideAsActiveScene;
 
+        [ BoxGroup( "Level Dsgn" ) ] public string question;
+        [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
+
+		[ ShowInInspector ] private List< string > question_answers_editor = new List< string >();
 #if UNITY_EDITOR
 		private static IEnumerable SceneList()
         {
@@ -25,6 +30,25 @@ namespace FFStudio
 				list.Add( Path.GetFileNameWithoutExtension( SceneUtility.GetScenePathByBuildIndex( i ) ) + $" ({i})", i );
 
 			return list;
+		}
+
+		private void OnValidate()
+		{
+			question_answers = new string[ question_answers_editor.Count ];
+
+			for( var i = 0; i < question_answers_editor.Count; i++ )
+			{
+				question_answers[ i ] = question_answers_editor[ i ].RemoveChar( ' ' );
+			}
+		}
+
+		[ Button() ]
+		private void LogAnswers()
+		{
+			for( var i = 0; i < question_answers.Length; i++ )
+			{
+				FFLogger.Log( question_answers[ i ] , this );
+			}
 		}
 #endif
     }

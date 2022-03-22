@@ -5,6 +5,7 @@ using System.Globalization;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using System.Text;
 
 namespace FFStudio
 {
@@ -13,6 +14,8 @@ namespace FFStudio
 		//Static Variables
 		private static List< Transform > baseModelBones = new List< Transform >( 96 );
 		private static List< Transform > targetModelBones = new List< Transform >( 96 );
+
+		private static StringBuilder stringBuilder = new StringBuilder( 64 );
 
 		public static Vector2 ReturnV2FromUnSignedAngle( this float angle )
 		{
@@ -373,6 +376,23 @@ namespace FFStudio
 		public static T ReturnRandom< T >( this T[] array )
 		{
 			return array[ Random.Range( 0, array.Length ) ];
+		}
+
+		public static string RemoveChar( this string value, char remove )
+		{
+			stringBuilder.Clear();
+
+			for( var i = 0; i < value.Length; i++ )
+			{
+				var character = value[ i ];
+				var isASCII = ( 65 <= character && character <= 90 ) || ( 97 <= character && character <= 122 );
+
+				if( character != remove && isASCII )
+					stringBuilder.Append( character );
+
+			}
+
+			return stringBuilder.ToString();
 		}
 	}
 }
