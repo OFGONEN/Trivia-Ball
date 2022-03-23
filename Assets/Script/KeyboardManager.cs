@@ -35,7 +35,7 @@ public class KeyboardManager : MonoBehaviour
     {
 		updateMethod();
 
-		keyboard_height.sharedValue = TouchScreenKeyboard.area.height;
+		//todo keyboard_height.sharedValue = TouchScreenKeyboard.area.height;
 	}
 #endregion
 
