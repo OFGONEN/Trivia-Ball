@@ -18,7 +18,7 @@ namespace FFStudio
         [ BoxGroup( "Level Dsgn" ) ] public string question;
         [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
 
-		public Dictionary< int, string > question_answers_dictionary;
+		private Dictionary< int, string > question_answers_dictionary;
 
 		public void InitAnswerDictionay()
 		{
@@ -29,6 +29,11 @@ namespace FFStudio
 					question_answers_dictionary.Add( question_answers[ i ].GetHashCode(), question_answers[ i ] );
 				}
 			}
+		}
+
+		public bool CheckIfCorrectAnswer( int hashCode )
+		{
+			return question_answers_dictionary.ContainsKey( hashCode );
 		}
 #if UNITY_EDITOR
 		[ ShowInInspector ] private List< string > question_answers_editor = new List< string >();

@@ -2,6 +2,7 @@
 
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections.Generic;
 
 namespace FFStudio
 {
@@ -16,9 +17,13 @@ namespace FFStudio
         [ Header( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
+        public GameEvent event_player_answer_wrong;
 
         [ Header( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
+
+        // Private
+        private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
 #endregion
 
 #region UnityAPI
@@ -42,6 +47,22 @@ namespace FFStudio
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
         }
+#endregion
+
+#region API
+        public void KeyboardSubmitResponse( StringGameEvent gameEvent )
+        {
+			var answer = gameEvent.eventValue;
+			var answer_hash = answer.GetHashCode();
+
+			if( CurrentLevelData.Instance.levelData.CheckIfCorrectAnswer( answer_hash ) )
+            {
+                //todo handle correct answer
+				// player_answers.Add( answer_hash, answer );
+			}
+            else
+				event_player_answer_wrong.Raise();
+		}
 #endregion
 
 #region Implementation
