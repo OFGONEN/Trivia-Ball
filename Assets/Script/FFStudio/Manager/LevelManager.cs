@@ -3,6 +3,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
+using DG.Tweening;
 
 namespace FFStudio
 {
@@ -13,6 +14,7 @@ namespace FFStudio
         public EventListenerDelegateResponse levelLoadedListener;
         public EventListenerDelegateResponse levelRevealedListener;
         public EventListenerDelegateResponse levelStartedListener;
+        public MultipleEventListenerDelegateResponse levelFinishedListener;
 
         [ Header( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
@@ -26,6 +28,7 @@ namespace FFStudio
 
         // Private
         private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
+        private RecycledTween ai_answer_tween = new RecycledTween();
 #endregion
 
 #region UnityAPI
@@ -34,13 +37,15 @@ namespace FFStudio
             levelLoadedListener.OnEnable();
             levelRevealedListener.OnEnable();
             levelStartedListener.OnEnable();
-        }
+			levelFinishedListener.OnEnable();
+		}
 
         private void OnDisable()
         {
             levelLoadedListener.OnDisable();
             levelRevealedListener.OnDisable();
             levelStartedListener.OnDisable();
+			levelFinishedListener.OnDisable();
         }
 
         private void Awake()
@@ -48,6 +53,7 @@ namespace FFStudio
             levelLoadedListener.response   = LevelLoadedResponse;
             levelRevealedListener.response = LevelRevealedResponse;
             levelStartedListener.response  = LevelStartedResponse;
+            levelFinishedListener.response = LevelFinishedResponse;
         }
 #endregion
 
@@ -97,8 +103,25 @@ namespace FFStudio
 
         private void LevelStartedResponse()
         {
+			ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+		}
 
-        }
+        private void LevelFinishedResponse()
+        {
+			ai_answer_tween.Kill();
+		}
+
+        private void AIAnswer()
+        {
+			var randomAnswer = CurrentLevelData.Instance.levelData.question_answers.ReturnRandom().Length;
+
+			event_ballSpawn_enemy.Raise( GameSettings.Instance.ball_enemy_direction,
+				randomAnswer,
+				GameSettings.Instance.ball_enemy_color
+			);
+
+			ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+		}
 #endregion
     }
 }

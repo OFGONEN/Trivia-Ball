@@ -394,6 +394,11 @@ namespace FFStudio
 
 			return stringBuilder.ToString();
 		}
+
+		public static float ReturnRandom( this Vector2 value )
+		{
+			return Random.Range( value.x, value.y );
+		}
 	}
 }
 

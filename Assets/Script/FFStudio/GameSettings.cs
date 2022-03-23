@@ -43,6 +43,8 @@ namespace FFStudio
 		[ BoxGroup( "Ball" ) ] public float ball_enemy_direction;
 		[ BoxGroup( "Ball" ) ] public Color ball_enemy_color;
 
+		[ BoxGroup( "AI" ) ] public float ai_answer_cooldown;
+
 		[ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 
         [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_height;
