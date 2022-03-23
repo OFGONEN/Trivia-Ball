@@ -25,10 +25,10 @@ MonoBehaviour:
   swipeThreshold: 2
   bar_movement_drag: 1
   bar_width: 3
-  ball_spawn_layer: 31
+  ball_spawn_layer: 2
   ball_spawn_trigger: 0
   ball_health_color: {r: 0.31132078, g: 0.31132078, b: 0.31132078, a: 1}
-  ball_launch_power: 1
+  ball_launch_power: 3
   ball_launch_power_torque: 1
   keyboard_max_characterLimit: 30
   debug_ui_text_float_height: 1
