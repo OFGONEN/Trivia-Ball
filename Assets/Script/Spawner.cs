@@ -20,11 +20,12 @@ public class Spawner : MonoBehaviour
 #endregion
 
 #region API
-    [ Button() ]
-    public void SpawnBall( float direction ) //TODO can have spawn ball game evet
+    public void SpawnBall( BallSpawnEvent spawnEvent ) 
     {
+		//todo handle spawnEvent.letterCount
+
 		var ball = pool_ball.GetEntity();
-		ball.Spawn( transform.position, direction, 3, 1, Color.green );
+		ball.Spawn( transform.position, spawnEvent.direction, 3, 1, spawnEvent.color );
 
 		var position_bar = ( notifier_bar_transform.sharedValue as Transform ).position;
 
