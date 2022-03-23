@@ -18,6 +18,8 @@ namespace FFStudio
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
         public GameEvent event_player_answer_wrong;
+        public BallSpawnEvent event_ballSpawn_player;
+        public BallSpawnEvent event_ballSpawn_enemy;
 
         [ Header( "Level Releated" ) ]
         public SharedFloatNotifier levelProgress;
@@ -55,10 +57,19 @@ namespace FFStudio
 			var answer = gameEvent.eventValue;
 			var answer_hash = answer.GetHashCode();
 
-			if( CurrentLevelData.Instance.levelData.CheckIfCorrectAnswer( answer_hash ) )
+			if( CurrentLevelData.Instance.levelData.CheckIfCorrectAnswer( answer_hash ) && !player_answers.ContainsKey( answer_hash ) )
             {
-                //todo handle correct answer
-				// player_answers.Add( answer_hash, answer );
+				player_answers.Add( answer_hash, answer );
+
+                // If player answerd all questions, start over
+                if( player_answers.Keys.Count == CurrentLevelData.Instance.levelData.question_answers.Length )
+					player_answers.Clear();
+
+                // Raise ball spawn event for player
+				event_ballSpawn_player.Raise( GameSettings.Instance.ball_player_direction,
+					answer.Length,
+					GameSettings.Instance.ball_player_color
+				);
 			}
             else
 				event_player_answer_wrong.Raise();

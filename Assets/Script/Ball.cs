@@ -67,7 +67,7 @@ public class Ball : MonoBehaviour
 		ball_health_current -= 1;
 
 		var newColor = Color.Lerp( ball_color,
-			GameSettings.Instance.ball_health_color,
+			GameSettings.Instance.ball_targetColor,
 			Mathf.InverseLerp( ball_health, 0, ball_health_current ) 
         );
 

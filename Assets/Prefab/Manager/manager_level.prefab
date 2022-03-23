@@ -53,6 +53,8 @@ MonoBehaviour:
   levelFailedEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
   levelCompleted: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
   event_player_answer_wrong: {fileID: 11400000, guid: 119157e87ea910d41b1bb6e7468c0079, type: 2}
+  event_ballSpawn_player: {fileID: 11400000, guid: 35cadf52d1fbf0548a15e7b1be045a01, type: 2}
+  event_ballSpawn_enemy: {fileID: 11400000, guid: 6863af7929091474c96ee538bd944322, type: 2}
   levelProgress: {fileID: 11400000, guid: 43438d720c16f2e4aa5a19d520e1e15f, type: 2}
 --- !u!114 &4968983939782135374
 MonoBehaviour:

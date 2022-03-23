@@ -35,9 +35,13 @@ namespace FFStudio
 
 		[ BoxGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ BoxGroup( "Ball" ) ] public bool ball_spawn_trigger;
-		[ BoxGroup( "Ball" ) ] public Color ball_health_color;
+		[ BoxGroup( "Ball" ) ] public Color ball_targetColor;
 		[ BoxGroup( "Ball" ) ] public float ball_launch_power;
 		[ BoxGroup( "Ball" ) ] public float ball_launch_power_torque;
+		[ BoxGroup( "Ball" ) ] public float ball_player_direction;
+		[ BoxGroup( "Ball" ) ] public Color ball_player_color;
+		[ BoxGroup( "Ball" ) ] public float ball_enemy_direction;
+		[ BoxGroup( "Ball" ) ] public Color ball_enemy_color;
 
 		[ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
 
@@ -60,6 +64,18 @@ namespace FFStudio
         {
             return instance;
         }
+#endregion
+
+
+#region EditoyrOnly
+#if UNITY_EDITOR
+		private void OnValidate()
+		{
+			ball_targetColor.SetAlpha( 1 );
+			ball_player_color.SetAlpha( 1 );
+			ball_enemy_color.SetAlpha( 1 );
+		}
+#endif
 #endregion
     }
 }
