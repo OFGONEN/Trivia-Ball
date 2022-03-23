@@ -32,6 +32,8 @@ namespace FFStudio
 				currentLevel_Real = Random.Range( 1, GameSettings.Instance.maxLevelCount );
 
 			levelData = Resources.Load<LevelData>( "level_data_" + currentLevel_Real );
+
+			levelData.InitAnswerDictionay();
 		}
 #endregion
 
