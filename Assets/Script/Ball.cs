@@ -78,6 +78,14 @@ public class Ball : MonoBehaviour
         if( ball_health_current <= 0 )
             DeSpawn();
 	}
+
+    public void LoadNewLevelResponse()
+    {
+        ball_rigidbody.velocity        = Vector3.zero;
+        ball_rigidbody.angularVelocity = Vector3.zero;
+
+		pool_ball.ReturnEntity( this );
+	}
 #endregion
 
 #region Implementation
