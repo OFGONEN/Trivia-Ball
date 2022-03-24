@@ -17,5 +17,7 @@ public class BallSpawnEvent : GameEvent
 		this.direction   = direction;
 		this.letterCount = letterCount;
 		this.color       = color;
+
+		Raise();
 	}
 }
