@@ -16,7 +16,7 @@ namespace FFStudio
 		public Vector3 scale; // Local scale.
 	}
 
-	[Serializable]
+	[ Serializable ]
 	public struct EventPair
 	{
 		public EventListenerDelegateResponse eventListener;
@@ -25,6 +25,45 @@ namespace FFStudio
 		public void Pair()
 		{
 			eventListener.response = unityEvent.Invoke;
+		}
+	}
+
+	[ Serializable ]
+	public struct EventPairDelayed
+	{
+		public EventListenerDelegateResponse eventListener;
+		public EventListenerDelegateResponse invoke_cancel;
+		public UnityEvent unityEvent;
+		public float invoke_delay;
+
+		private Tween invoke_tween;
+
+		public void OnEnable()
+		{
+			eventListener.OnEnable();
+			invoke_cancel.OnEnable();
+		}
+
+		public void OnDisable()
+		{
+			eventListener.OnDisable();
+			invoke_cancel.OnDisable();
+		}
+
+		public void Pair()
+		{
+			eventListener.response = InvokeDelayed;
+			invoke_cancel.response = InvokeCanceled;
+		}
+
+		private void InvokeDelayed()
+		{
+			invoke_tween = DOVirtual.DelayedCall( invoke_delay, unityEvent.Invoke );
+		}
+
+		private void InvokeCanceled()
+		{
+			invoke_tween = invoke_tween.KillProper();
 		}
 	}
 
