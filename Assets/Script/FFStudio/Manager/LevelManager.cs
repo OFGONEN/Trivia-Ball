@@ -75,7 +75,8 @@ namespace FFStudio
 
                 // Raise ball spawn event for player
 				event_ballSpawn_player.Raise( GameSettings.Instance.ball_player_direction,
-					answer.Length,
+				    Mathf.Max( 1, answer.Length / GameSettings.Instance.ball_spawn_letterCount ),
+                    PlayerPrefs.GetInt( "power", 1 ),
 					GameSettings.Instance.ball_player_color
 				);
 			}
@@ -117,10 +118,12 @@ namespace FFStudio
 
         private void AIAnswer()
         {
-			var randomAnswer = CurrentLevelData.Instance.levelData.question_answers.ReturnRandom();
+			var levelData    = CurrentLevelData.Instance.levelData;
+			var randomAnswer = levelData.question_answers.ReturnRandom();
 
 			event_ballSpawn_enemy.Raise( GameSettings.Instance.ball_enemy_direction,
-				randomAnswer.Length,
+				Mathf.Max( 1, randomAnswer.Length / GameSettings.Instance.ball_spawn_letterCount ),
+                levelData.ai_power,
 				GameSettings.Instance.ball_enemy_color
 			);
 

@@ -37,7 +37,7 @@ public class Ball : MonoBehaviour
 #endregion
 
 #region API
-    public void Spawn( Vector3 position, float direction, int health, float power, Color color )
+    public void Spawn( Vector3 position, float direction, float power, Color color )
     {
 		gameObject.SetActive( true );
 
@@ -49,8 +49,8 @@ public class Ball : MonoBehaviour
 
 		ball_color_setter.SetColor( color );
 
-		ball_health         = health;
-		ball_health_current = health;
+		ball_health         = GameSettings.Instance.ball_spawn_health;
+		ball_health_current = GameSettings.Instance.ball_spawn_health;
 		ball_power          = power;
 		ball_direction      = direction;
 		ball_color          = color;

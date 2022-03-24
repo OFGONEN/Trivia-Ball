@@ -14,5 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  question: 
-  question_answers: []
+  question: Color Question
+  question_answers:
+  - blue
+  - red
+  - qe
+  - beslik
+  - asdqw
+  ai_power: 1
+  ai_answer_rate: {x: 1.314879, y: 2.9065742}

@@ -17,38 +17,46 @@ namespace FFStudio
 #endregion
         
 #region Fields
-        [ BoxGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
-        [ BoxGroup( "Remote Config" ) ] public bool useRemoteConfig_Components;
+        [ HideInInspector ] public int maxLevelCount;
 
-        public int maxLevelCount;
-        [ BoxGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_Move_TweenDuration;
-        [ BoxGroup( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
-		[ BoxGroup( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;
-		[ BoxGroup( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
-		[ BoxGroup( "UI Settings" ), Tooltip( "Joy Stick"                                        ) ] public float ui_Entity_JoyStick_Gap;
-		[ BoxGroup( "UI Settings" ), Tooltip( "Pop Up Text relative float height"                ) ] public float ui_PopUp_height;
-		[ BoxGroup( "UI Settings" ), Tooltip( "Pop Up Text float duration"                       ) ] public float ui_PopUp_duration;
-        [ BoxGroup( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
+	// Level Design
+        [ BoxGroup( "Dsgn Bar" ) ] public float bar_movement_drag;
 
-        [ BoxGroup( "Bar" ) ] public float bar_movement_drag;
-        [ BoxGroup( "Bar" ) ] public float bar_width;
+		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_letterCount;
+		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_health;
+		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_targetColor;
+		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power;
+		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power_torque;
+		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_player_color;
+		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_enemy_color;
 
-		[ BoxGroup( "Ball" ), Layer ] public int ball_spawn_layer;
-		[ BoxGroup( "Ball" ) ] public bool ball_spawn_trigger;
-		[ BoxGroup( "Ball" ) ] public Color ball_targetColor;
-		[ BoxGroup( "Ball" ) ] public float ball_launch_power;
-		[ BoxGroup( "Ball" ) ] public float ball_launch_power_torque;
-		[ BoxGroup( "Ball" ) ] public float ball_player_direction;
-		[ BoxGroup( "Ball" ) ] public Color ball_player_color;
-		[ BoxGroup( "Ball" ) ] public float ball_enemy_direction;
-		[ BoxGroup( "Ball" ) ] public Color ball_enemy_color;
+	// Game Settings
+        [ FoldoutGroup( "Bar" )   		] public float bar_width;
 
-		[ BoxGroup( "AI" ) ] public float ai_answer_cooldown;
+		[ FoldoutGroup( "Ball" ), Layer ] public int ball_spawn_layer;
+		[ FoldoutGroup( "Ball" )        ] public bool ball_spawn_trigger;
+		[ FoldoutGroup( "Ball" )        ] public float ball_spawn_delay = 0.2f;
+		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
+		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
 
-		[ BoxGroup( "Keyboard" ) ] public int keyboard_max_characterLimit;
+		[ FoldoutGroup( "AI" )          ] public float ai_answer_cooldown;
 
-        [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_height;
-        [ BoxGroup( "Debug" ) ] public float debug_ui_text_float_duration;
+		[ FoldoutGroup( "Keyboard" )    ] public int keyboard_max_characterLimit;
+
+        [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
+        [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
+
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_Move_TweenDuration;
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
+		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;
+		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for floating ui element" ) ] public float ui_Entity_FloatingMove_TweenDuration;
+		[ FoldoutGroup( "UI Settings" ), Tooltip( "Joy Stick"                                        ) ] public float ui_Entity_JoyStick_Gap;
+		[ FoldoutGroup( "UI Settings" ), Tooltip( "Pop Up Text relative float height"                ) ] public float ui_PopUp_height;
+		[ FoldoutGroup( "UI Settings" ), Tooltip( "Pop Up Text float duration"                       ) ] public float ui_PopUp_duration;
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Percentage of the screen to register a swipe"     ) ] public int swipeThreshold;
+
+        [ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_GameSettings;
+        [ FoldoutGroup( "Remote Config" ) ] public bool useRemoteConfig_Components;
 #endregion
 
 #region Implementation

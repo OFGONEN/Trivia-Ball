@@ -9,14 +9,16 @@ using FFStudio;
 public class BallSpawnEvent : GameEvent
 {
 	public float direction;
-	public int letterCount;
+	public int spawnCount;
+	public float power;
 	public Color color;
 
-	public void Raise( float direction, int letterCount, Color color )
+	public void Raise( float direction, int spawnCount, float power, Color color )
 	{
-		this.direction   = direction;
-		this.letterCount = letterCount;
-		this.color       = color;
+		this.direction  = direction;
+		this.spawnCount = spawnCount;
+		this.color      = color;
+		this.power      = power;
 
 		Raise();
 	}
