@@ -13,24 +13,25 @@ namespace FFStudio
 #region Fields
         [ BoxGroup( "UI Elements" ) ] public Image question_image;
         [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
+        [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
 
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelFailResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse tapInputListener;
 
-        [ FoldoutGroup( "Base - UI" ) ]public UI_Patrol_Scale level_loadingBar_Scale;
-        [ FoldoutGroup( "Base - UI" ) ]public TextMeshProUGUI level_count_text;
-        [ FoldoutGroup( "Base - UI" ) ]public TextMeshProUGUI level_information_text;
-        [ FoldoutGroup( "Base - UI" ) ]public UI_Patrol_Scale level_information_text_Scale;
-        [ FoldoutGroup( "Base - UI" ) ]public Image loadingScreenImage;
-        [ FoldoutGroup( "Base - UI" ) ]public Image foreGroundImage;
-        [ FoldoutGroup( "Base - UI" ) ]public RectTransform tutorialObjects;
+        [ FoldoutGroup( "Base - UI" ) ] public UI_Patrol_Scale level_loadingBar_Scale;
+        [ FoldoutGroup( "Base - UI" ) ] public TextMeshProUGUI level_count_text;
+        [ FoldoutGroup( "Base - UI" ) ] public TextMeshProUGUI level_information_text;
+        [ FoldoutGroup( "Base - UI" ) ] public UI_Patrol_Scale level_information_text_Scale;
+        [ FoldoutGroup( "Base - UI" ) ] public Image loadingScreenImage;
+        [ FoldoutGroup( "Base - UI" ) ] public Image foreGroundImage;
+        [ FoldoutGroup( "Base - UI" ) ] public RectTransform tutorialObjects;
 
-        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent levelRevealedEvent;
-        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent loadNewLevelEvent;
-        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent resetLevelEvent;
-        [ FoldoutGroup( "Base - Fired Events" ) ]public ElephantLevelEvent elephantLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent levelRevealedEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent loadNewLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent resetLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public ElephantLevelEvent elephantLevelEvent;
 #endregion
 
 #region Unity API
@@ -90,6 +91,7 @@ namespace FFStudio
 
 			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( answerBox_player.DOMoveX( -answerBox_player.sizeDelta.x, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
@@ -108,6 +110,7 @@ namespace FFStudio
 			level_information_text.text = "Level Failed \n\n Tap to Continue";
 
 			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( answerBox_player.DOMoveX( -answerBox_player.sizeDelta.x, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
@@ -144,6 +147,8 @@ namespace FFStudio
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 			question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 			question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+
+			answerBox_player.DOMoveX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
 			level_information_text_Scale.Subscribe_OnComplete( levelRevealedEvent.Raise );
