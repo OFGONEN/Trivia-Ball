@@ -4,32 +4,33 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
     public class UIManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
-        public EventListenerDelegateResponse levelLoadedResponse;
-        public EventListenerDelegateResponse levelCompleteResponse;
-        public EventListenerDelegateResponse levelFailResponse;
-        public EventListenerDelegateResponse tapInputListener;
+        [ BoxGroup( "UI Elements" ) ] public Image question_image;
+        [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
 
-        [ Header( "UI Elements" ) ]
-        public UI_Patrol_Scale level_loadingBar_Scale;
-        public TextMeshProUGUI level_count_text;
-        public TextMeshProUGUI level_information_text;
-        public UI_Patrol_Scale level_information_text_Scale;
-        public Image loadingScreenImage;
-        public Image foreGroundImage;
-        public RectTransform tutorialObjects;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelFailResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse tapInputListener;
 
-        [ Header( "Fired Events" ) ]
-        public GameEvent levelRevealedEvent;
-        public GameEvent loadNewLevelEvent;
-        public GameEvent resetLevelEvent;
-        public ElephantLevelEvent elephantLevelEvent;
+        [ FoldoutGroup( "Base - UI" ) ]public UI_Patrol_Scale level_loadingBar_Scale;
+        [ FoldoutGroup( "Base - UI" ) ]public TextMeshProUGUI level_count_text;
+        [ FoldoutGroup( "Base - UI" ) ]public TextMeshProUGUI level_information_text;
+        [ FoldoutGroup( "Base - UI" ) ]public UI_Patrol_Scale level_information_text_Scale;
+        [ FoldoutGroup( "Base - UI" ) ]public Image loadingScreenImage;
+        [ FoldoutGroup( "Base - UI" ) ]public Image foreGroundImage;
+        [ FoldoutGroup( "Base - UI" ) ]public RectTransform tutorialObjects;
+
+        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent levelRevealedEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent loadNewLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ]public GameEvent resetLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ]public ElephantLevelEvent elephantLevelEvent;
 #endregion
 
 #region Unity API
@@ -57,12 +58,18 @@ namespace FFStudio
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
 			level_information_text.text = "Tap to Start";
-        }
+
+			question_image.color = question_image.color.SetAlpha( 0 );
+			question_text.color = question_text.color.SetAlpha( 0 );
+			question_text.text   = string.Empty;
+		}
 #endregion
 
 #region Implementation
         private void LevelLoadedResponse()
         {
+			question_text.text = CurrentLevelData.Instance.levelData.question;
+
 			var sequence = DOTween.Sequence()
 								.Append( level_loadingBar_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
@@ -81,7 +88,9 @@ namespace FFStudio
 
 			level_information_text.text = "Completed \n\n Tap to Continue";
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
@@ -98,7 +107,9 @@ namespace FFStudio
 			// Tween tween = null;
 			level_information_text.text = "Level Failed \n\n Tap to Continue";
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = Resetlevel );
@@ -131,6 +142,8 @@ namespace FFStudio
 		private void StartLevel()
 		{
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+			question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+			question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
 			level_information_text_Scale.Subscribe_OnComplete( levelRevealedEvent.Raise );
