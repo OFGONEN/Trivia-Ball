@@ -15,12 +15,13 @@ MonoBehaviour:
   maxLevelCount: 1
   bar_movement_drag: 1
   ball_spawn_letterCount: 2
-  ball_spawn_health: 3
   ball_targetColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
   ball_launch_power: 5
   ball_launch_power_torque: 1
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
+  ball_default_power: 1
+  ball_default_health: 2
   bar_width: 3
   ball_spawn_layer: 2
   ball_spawn_trigger: 0

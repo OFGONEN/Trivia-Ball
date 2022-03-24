@@ -23,12 +23,14 @@ namespace FFStudio
         [ BoxGroup( "Dsgn Bar" ) ] public float bar_movement_drag;
 
 		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_letterCount;
-		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_health;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_targetColor;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power_torque;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_player_color;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_enemy_color;
+		[ BoxGroup( "Dsgn Ball" ) ] public float ball_default_power;
+		[ BoxGroup( "Dsgn Ball" ) ] public int ball_default_health;
+
 
 	// Game Settings
         [ FoldoutGroup( "Bar" )   		] public float bar_width;

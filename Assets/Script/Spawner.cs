@@ -28,13 +28,14 @@ public class Spawner : MonoBehaviour
 		var direction = spawnEvent.direction;
 		var power     = spawnEvent.power;
 		var count     = spawnEvent.spawnCount;
+		var health    = spawnEvent.health;
 		var color     = spawnEvent.color;
 
 		var sequence = recycledSequence.Recycle();
 
 		for( var i = 0; i < count; i++ )
 		{
-			sequence.AppendCallback( () => SpawnBall( direction, power, color ) );
+			sequence.AppendCallback( () => SpawnBall( direction, power, health, color ) );
 			sequence.AppendInterval( GameSettings.Instance.ball_spawn_delay );
 		}
 	}
@@ -46,10 +47,10 @@ public class Spawner : MonoBehaviour
 #endregion
 
 #region Implementation
-	private void SpawnBall( float direction, float power, Color color )
+	private void SpawnBall( float direction, float power, int health, Color color )
 	{
 		var ball = pool_ball.GetEntity();
-		ball.Spawn( transform.position, direction, power, color );
+		ball.Spawn( transform.position, direction, power, health, color );
 
 		var position_bar = ( notifier_bar_transform.sharedValue as Transform ).position;
 

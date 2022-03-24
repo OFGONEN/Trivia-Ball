@@ -11,14 +11,16 @@ public class BallSpawnEvent : GameEvent
 	public float direction;
 	public int spawnCount;
 	public float power;
+	public int health;
 	public Color color;
 
-	public void Raise( float direction, int spawnCount, float power, Color color )
+	public void Raise( float direction, int spawnCount, float power, int health, Color color )
 	{
 		this.direction  = direction;
 		this.spawnCount = spawnCount;
-		this.color      = color;
 		this.power      = power;
+		this.health     = health;
+		this.color      = color;
 
 		Raise();
 	}

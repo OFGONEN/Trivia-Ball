@@ -18,8 +18,9 @@ namespace FFStudio
         [ BoxGroup( "Level Dsgn" ) ] public string question;
         [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
 
-        [ BoxGroup( "AI" ), Range( 0, 5 ) ] public float ai_power = 1f;
         [ BoxGroup( "AI" ), MinMaxSlider( 0, 10f ) ] public Vector2 ai_answer_rate;
+        [ BoxGroup( "AI" ), Range( 0, 5 ) ]  public float ai_ball_power = 1f;
+        [ BoxGroup( "AI" ), Range( 0, 10 ) ] public int ai_ball_health  = 2;
 
 		private Dictionary< int, string > question_answers_dictionary;
 
