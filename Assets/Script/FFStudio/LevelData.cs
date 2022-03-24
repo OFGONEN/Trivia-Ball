@@ -60,7 +60,7 @@ namespace FFStudio
 
 			for( var i = 0; i < question_answers_editor.Count; i++ )
 			{
-				question_answers[ i ] = question_answers_editor[ i ].RemoveChar( ' ' );
+				question_answers[ i ] = question_answers_editor[ i ].RemoveChar( ' ' ).ToLower();
 			}
 		}
 

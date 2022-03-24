@@ -71,7 +71,8 @@ public class KeyboardManager : MonoBehaviour
 
         if( keyboard.status == TouchScreenKeyboard.Status.Done )
         {
-			keyboard_submit.Raise( keyboard.text.RemoveChar( ' ' ) );
+			keyboard_submit.Raise( keyboard.text.RemoveChar( ' ' ).ToLower() );
+
 			ClearKeyboardInput();
 
 			keyboard = TouchScreenKeyboard.Open( null, TouchScreenKeyboardType.Default, false, false, false, false, null, 100 );
