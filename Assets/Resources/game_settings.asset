@@ -34,6 +34,7 @@ MonoBehaviour:
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_direction: -1
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
+  ai_answer_cooldown: 2
   keyboard_max_characterLimit: 30
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1

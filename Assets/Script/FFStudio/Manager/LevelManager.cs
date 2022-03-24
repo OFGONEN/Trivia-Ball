@@ -30,7 +30,7 @@ namespace FFStudio
 
 		// Private
 		private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
-        private RecycledTween ai_answer_tween = new RecycledTween();
+        private Tween ai_answer_tween;
 #endregion
 
 #region UnityAPI
@@ -88,6 +88,7 @@ namespace FFStudio
         private void LevelLoadedResponse()
         {
 			levelProgress.SetValue_NotifyAlways( 0 );
+			player_answers.Clear();
 
 			var levelData = CurrentLevelData.Instance.levelData;
 
@@ -105,7 +106,8 @@ namespace FFStudio
 
         private void LevelStartedResponse()
         {
-			ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+			// ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+			ai_answer_tween = DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer );
 		}
 
         private void LevelFinishedResponse()
@@ -123,8 +125,8 @@ namespace FFStudio
 			);
 
 			notifier_enemy_input.SetValue_NotifyAlways( randomAnswer );
-
-			ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+			// ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
+			ai_answer_tween = DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer );
 		}
 #endregion
     }
