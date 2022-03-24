@@ -4,30 +4,32 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections.Generic;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
     public class LevelManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
+        [ TitleGroup( "Event Listeners" ) ]
         public EventListenerDelegateResponse levelLoadedListener;
         public EventListenerDelegateResponse levelRevealedListener;
         public EventListenerDelegateResponse levelStartedListener;
         public MultipleEventListenerDelegateResponse levelFinishedListener;
 
-        [ Header( "Fired Events" ) ]
+        [ TitleGroup( "Fired Events" ) ]
         public GameEvent levelFailedEvent;
         public GameEvent levelCompleted;
         public GameEvent event_player_answer_wrong;
         public BallSpawnEvent event_ballSpawn_player;
         public BallSpawnEvent event_ballSpawn_enemy;
 
-        [ Header( "Level Releated" ) ]
+        [ TitleGroup( "Shared" ) ]
         public SharedFloatNotifier levelProgress;
+		public SharedStringNotifier notifier_enemy_input;
 
-        // Private
-        private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
+		// Private
+		private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
         private RecycledTween ai_answer_tween = new RecycledTween();
 #endregion
 
@@ -113,12 +115,14 @@ namespace FFStudio
 
         private void AIAnswer()
         {
-			var randomAnswer = CurrentLevelData.Instance.levelData.question_answers.ReturnRandom().Length;
+			var randomAnswer = CurrentLevelData.Instance.levelData.question_answers.ReturnRandom();
 
 			event_ballSpawn_enemy.Raise( GameSettings.Instance.ball_enemy_direction,
-				randomAnswer,
+				randomAnswer.Length,
 				GameSettings.Instance.ball_enemy_color
 			);
+
+			notifier_enemy_input.SetValue_NotifyAlways( randomAnswer );
 
 			ai_answer_tween.Recycle( DOVirtual.DelayedCall( CurrentLevelData.Instance.levelData.ai_answer_rate.ReturnRandom(), AIAnswer  ) );
 		}
