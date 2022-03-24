@@ -14,6 +14,7 @@ namespace FFStudio
         [ BoxGroup( "UI Elements" ) ] public Image question_image;
         [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
+        [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
 
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
@@ -32,6 +33,8 @@ namespace FFStudio
         [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent loadNewLevelEvent;
         [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent resetLevelEvent;
         [ FoldoutGroup( "Base - Fired Events" ) ] public ElephantLevelEvent elephantLevelEvent;
+
+        private RecycledSequence answerBox_enemy_sequence = new RecycledSequence();
 #endregion
 
 #region Unity API
@@ -63,6 +66,19 @@ namespace FFStudio
 			question_image.color = question_image.color.SetAlpha( 0 );
 			question_text.color = question_text.color.SetAlpha( 0 );
 			question_text.text   = string.Empty;
+		}
+#endregion
+
+#region API
+        public void TweenEnemyBox()
+        {
+			answerBox_enemy_sequence.Kill();
+
+			var sequence = answerBox_enemy_sequence.Recycle();
+
+			sequence.Append( answerBox_enemy.DOAnchorPosX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+			sequence.AppendInterval( GameSettings.Instance.ai_answer_cooldown );
+			sequence.Append( answerBox_enemy.DOAnchorPosX( answerBox_enemy.sizeDelta.x, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
 		}
 #endregion
 
