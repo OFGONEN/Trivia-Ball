@@ -38,6 +38,11 @@ public class Bar : MonoBehaviour
 		updateMethod = Movement;
 	}
 
+    public void StopMovement()
+    {
+		updateMethod = ExtensionMethods.EmptyMethod;
+	}
+
     public void BallCollided( Collision collision )
     {
 		var ball = collision.gameObject.GetComponentInParent< Ball >();
