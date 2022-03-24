@@ -26,6 +26,8 @@ namespace FFStudio
 		{
 			if( question_answers_dictionary == null )
 			{
+				question_answers_dictionary = new Dictionary< int, string >( question_answers.Length );
+
 				for( var i = 0; i < question_answers.Length; i++ )
 				{
 					question_answers_dictionary.Add( question_answers[ i ].GetHashCode(), question_answers[ i ] );
