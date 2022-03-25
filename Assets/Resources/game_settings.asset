@@ -22,14 +22,16 @@ MonoBehaviour:
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
   ball_default_power: 1
   ball_default_health: 2
+  ball_currency: {x: 3, y: 5}
+  ball_currency_textSize: {x: 0.4116988, y: 1.1303598}
   bar_width: 3
+  ai_answer_cooldown: 2
+  keyboard_max_characterLimit: 30
   ball_spawn_layer: 2
   ball_spawn_trigger: 0
   ball_spawn_delay: 0.2
   ball_player_direction: 1
   ball_enemy_direction: -1
-  ai_answer_cooldown: 2
-  keyboard_max_characterLimit: 30
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1
   ui_Entity_Move_TweenDuration: 0.5
