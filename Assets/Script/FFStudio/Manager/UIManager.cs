@@ -15,8 +15,8 @@ namespace FFStudio
         [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
-        [ BoxGroup( "UI Elements" ) ] public Button incremental_left;
-        [ BoxGroup( "UI Elements" ) ] public Button incremental_right;
+        [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_left;
+        [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_right;
 
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
@@ -68,9 +68,6 @@ namespace FFStudio
 			question_image.color = question_image.color.SetAlpha( 0 );
 			question_text.color = question_text.color.SetAlpha( 0 );
 			question_text.text   = string.Empty;
-
-			incremental_left.interactable = false;
-			incremental_right.interactable = false;
 		}
 #endregion
 
@@ -88,22 +85,10 @@ namespace FFStudio
 
         public void IncrementalSelected()
         {
-			incremental_left.interactable  = false;
-			incremental_right.interactable = false;
-
-            //todo! quesiton 'u reveal et.
-
-			var left  = incremental_left.targetGraphic.rectTransform;
-			var right = incremental_right.targetGraphic.rectTransform;
-
 			var sequence = DOTween.Sequence();
 
-			sequence.Append( left.DOAnchorPosY(
-							-( left.anchoredPosition.y + left.sizeDelta.y ),
-							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
- 					.Join( right.DOAnchorPosY(
-							-( right.anchoredPosition.y + right.sizeDelta.y ),
-							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+			sequence.Append( incremental_left.GoDown() )
+ 					.Join( incremental_right.GoDown() )
 					.AppendCallback( levelRevealedEvent.Raise )
 					.Append( question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Join( question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
@@ -223,9 +208,6 @@ namespace FFStudio
 
         private void ShowIncremental()
         {
-			var left  = incremental_left.targetGraphic.rectTransform;
-			var right = incremental_right.targetGraphic.rectTransform;
-
 			tutorialObjects.gameObject.SetActive( false );
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
@@ -233,17 +215,8 @@ namespace FFStudio
 
 			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-					.Append( left.DOAnchorPosY(
-							-left.anchoredPosition.y - left.sizeDelta.y,
-							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
- 					.Join( right.DOAnchorPosY(
-							-right.anchoredPosition.y - right.sizeDelta.y,
-							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
-					.AppendCallback( () =>
-                        {
-							incremental_left.interactable = true;
-							incremental_right.interactable = true;
-						} );
+					.Append( incremental_left.GoUp() )
+ 					.Join( incremental_right.GoUp() );
 		}
 
 		private void LoadNewLevel()
