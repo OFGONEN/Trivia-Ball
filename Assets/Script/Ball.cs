@@ -15,8 +15,9 @@ public class Ball : MonoBehaviour
 
     // Private Fields \\
     private int ball_health;
-    [ ShowInInspector, ReadOnly ] private int ball_health_current;
-    private float ball_direction;
+    private int ball_health_current;
+	private bool ball_currency;
+	private float ball_direction;
     private float ball_power;
 	private Color ball_color;
 	private Color ball_color_current;
@@ -40,7 +41,7 @@ public class Ball : MonoBehaviour
 #endregion
 
 #region API
-    public void Spawn( Vector3 position, float direction, float power, int health, Color color )
+    public void Spawn( bool currency, Vector3 position, float direction, float power, int health, Color color )
     {
 		gameObject.SetActive( true );
 
@@ -52,6 +53,7 @@ public class Ball : MonoBehaviour
 
 		ball_color_setter.SetColor( color );
 
+		ball_currency       = currency;
 		ball_health         = health;
 		ball_health_current = health;
 		ball_power          = power;
@@ -68,11 +70,14 @@ public class Ball : MonoBehaviour
 
     public void OnCollision_Bar( Bar bar )
     {
-		var increase = Mathf.RoundToInt( GameSettings.Instance.ball_currency.ReturnRandom() * CurrentLevelData.Instance.levelData.currency_cofactor );
-		notifier_currency.SharedValue += increase;
+		if( ball_currency )
+		{
+			var increase = Mathf.RoundToInt( GameSettings.Instance.ball_currency.ReturnRandom() * CurrentLevelData.Instance.levelData.currency_cofactor );
+			notifier_currency.SharedValue += increase;
 
-		var popUp = pool_popUpText.GetEntity();
-		popUp.Spawn( transform.position, $"+{increase}", GameSettings.Instance.ball_currency_textSize.ReturnRandom(), ball_color.SetAlpha( 1 ) );
+			var popUp = pool_popUpText.GetEntity();
+			popUp.Spawn( transform.position, $"+{increase}", GameSettings.Instance.ball_currency_textSize.ReturnRandom(), ball_color.SetAlpha( 1 ) );
+		}
 
 		ball_health_current -= 1;
 

@@ -8,14 +8,16 @@ using FFStudio;
 [ CreateAssetMenu( fileName = "event_ballSpawn_", menuName = "FF/Event/Ball Spawn" ) ]
 public class BallSpawnEvent : GameEvent
 {
+	public bool currency;
 	public float direction;
 	public int spawnCount;
 	public float power;
 	public int health;
 	public Color color;
 
-	public void Raise( float direction, int spawnCount, float power, int health, Color color )
+	public void Raise( bool currency, float direction, int spawnCount, float power, int health, Color color )
 	{
+		this.currency   = currency;
 		this.direction  = direction;
 		this.spawnCount = spawnCount;
 		this.power      = power;

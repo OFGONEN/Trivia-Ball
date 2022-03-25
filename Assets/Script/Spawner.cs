@@ -25,6 +25,7 @@ public class Spawner : MonoBehaviour
 #region API
     public void BallSpawnEventResponse( BallSpawnEvent spawnEvent ) 
     {
+		var currency  = spawnEvent.currency;
 		var direction = spawnEvent.direction;
 		var power     = spawnEvent.power;
 		var count     = spawnEvent.spawnCount;
@@ -35,7 +36,7 @@ public class Spawner : MonoBehaviour
 
 		for( var i = 0; i < count; i++ )
 		{
-			sequence.AppendCallback( () => SpawnBall( direction, power, health, color ) );
+			sequence.AppendCallback( () => SpawnBall( currency, direction, power, health, color ) );
 			sequence.AppendInterval( GameSettings.Instance.ball_spawn_delay );
 		}
 	}
@@ -47,10 +48,10 @@ public class Spawner : MonoBehaviour
 #endregion
 
 #region Implementation
-	private void SpawnBall( float direction, float power, int health, Color color )
+	private void SpawnBall( bool currency, float direction, float power, int health, Color color )
 	{
 		var ball = pool_ball.GetEntity();
-		ball.Spawn( transform.position, direction, power, health, color );
+		ball.Spawn( currency, transform.position, direction, power, health, color );
 
 		var position_bar = ( notifier_bar_transform.sharedValue as Transform ).position;
 
