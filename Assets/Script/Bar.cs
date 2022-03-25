@@ -46,7 +46,9 @@ public class Bar : MonoBehaviour
     public void BallCollided( Collision collision )
     {
 		var ball = collision.gameObject.GetComponentInParent< Ball >();
-		ball.OnCollision_Bar( this );
+
+		if( ball ) //todo remove this if bot balls are removed from project
+			ball.OnCollision_Bar( this );
 	}
 
     public void Push( float force )
