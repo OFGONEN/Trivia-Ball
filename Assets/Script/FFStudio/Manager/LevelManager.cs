@@ -27,6 +27,7 @@ namespace FFStudio
         [ TitleGroup( "Shared" ) ]
         public SharedFloatNotifier levelProgress;
 		public SharedStringNotifier notifier_enemy_input;
+		public SharedIntNotifier notifier_currency;
 
 		// Private
 		private Dictionary< int, string > player_answers = new Dictionary< int, string >( 64 );
@@ -115,6 +116,7 @@ namespace FFStudio
         private void LevelFinishedResponse()
         {
 			ai_answer_tween.Kill();
+			PlayerPrefs.SetInt( "currency", notifier_currency.SharedValue );
 		}
 
         private void AIAnswer()
