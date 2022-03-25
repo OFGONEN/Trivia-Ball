@@ -85,4 +85,12 @@ namespace FFStudio
 		public UnityEvent event_complete;
 		public bool event_complete_alwaysInvoke;
 	}
+
+	[ Serializable ]
+	public struct IncrementalData< T >
+	{
+    	public int incremental_cost;
+    	public string incremental_value_text;
+    	public T incremental_value;
+	}
 }

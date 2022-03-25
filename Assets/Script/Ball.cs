@@ -9,14 +9,17 @@ using Sirenix.OdinInspector;
 public class Ball : MonoBehaviour
 {
 #region Fields
+    [ BoxGroup( "Shared" ) ] public SharedIntNotifier notifier_currency;
     [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
+    [ BoxGroup( "Shared" ) ] public Pool_UIPopUpText pool_popUpText;
 
     // Private Fields \\
     private int ball_health;
     [ ShowInInspector, ReadOnly ] private int ball_health_current;
     private float ball_direction;
     private float ball_power;
-    private Color ball_color;
+	private Color ball_color;
+	private Color ball_color_current;
     
     // Components
     private Rigidbody ball_rigidbody;
@@ -53,6 +56,7 @@ public class Ball : MonoBehaviour
 		ball_health_current = health;
 		ball_power          = power;
 		ball_direction      = direction;
+		ball_color_current  = color;
 		ball_color          = color;
 	}
 
@@ -64,9 +68,15 @@ public class Ball : MonoBehaviour
 
     public void OnCollision_Bar( Bar bar )
     {
+		var increase = Mathf.RoundToInt( GameSettings.Instance.ball_currency.ReturnRandom() * CurrentLevelData.Instance.levelData.currency_cofactor );
+		notifier_currency.SharedValue += increase;
+
+		var popUp = pool_popUpText.GetEntity();
+		popUp.Spawn( transform.position, $"+{increase}", GameSettings.Instance.ball_currency_textSize.ReturnRandom(), ball_color.SetAlpha( 1 ) );
+
 		ball_health_current -= 1;
 
-		var newColor = Color.Lerp( ball_color,
+		var newColor = Color.Lerp( ball_color_current,
 			GameSettings.Instance.ball_targetColor,
 			Mathf.InverseLerp( ball_health, 0, ball_health_current ) 
         );

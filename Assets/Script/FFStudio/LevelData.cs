@@ -16,6 +16,7 @@ namespace FFStudio
         [ BoxGroup( "Setup" ), LabelText( "Override As Active Scene" ) ] public bool scene_overrideAsActiveScene;
 
         [ BoxGroup( "Level Dsgn" ) ] public bool showIncremantal;
+        [ BoxGroup( "Level Dsgn" ) ] public float currency_cofactor = 1f;
         [ BoxGroup( "Level Dsgn" ) ] public string question;
         [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
 
