@@ -52,6 +52,9 @@ public abstract class IncrementalButton : MonoBehaviour
 			 GameSettings.Instance.ui_Entity_Move_TweenDuration 
 		);
     }
+
+
+	public abstract bool CanAfford();
 #endregion
 
 #region Implementation
@@ -60,7 +63,6 @@ public abstract class IncrementalButton : MonoBehaviour
 		button.interactable = CanAfford();
 	}
 
-	protected abstract bool CanAfford();
 	protected abstract void UpdateVisual();
 #endregion
 

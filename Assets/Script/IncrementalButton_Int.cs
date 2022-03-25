@@ -11,7 +11,7 @@ public class IncrementalButton_Int : IncrementalButton
 {
     [ BoxGroup( "Setup" ) ] public IncrementalProgress_Int incrementalProgress;
 
-	protected override bool CanAfford()
+	public override bool CanAfford()
     {
         return notifier_currency.sharedValue > incrementalProgress.Cost;
 	}

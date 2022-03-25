@@ -10,7 +10,7 @@ public class IncrementalButton_Float : IncrementalButton
 {
     [ BoxGroup( "Setup" ) ] public IncrementalProgress_Float incrementalProgress;
 
-	protected override bool CanAfford()
+	public override bool CanAfford()
     {
         return notifier_currency.sharedValue > incrementalProgress.Cost;
 	}

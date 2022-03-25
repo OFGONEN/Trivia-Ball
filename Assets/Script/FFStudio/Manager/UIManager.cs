@@ -217,6 +217,12 @@ namespace FFStudio
 					.Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.Append( incremental_left.GoUp() )
  					.Join( incremental_right.GoUp() );
+
+			if( !incremental_left.CanAfford() && !incremental_right.CanAfford() )
+			{
+				sequence.AppendInterval( GameSettings.Instance.ui_Entity_wait_duration );
+				sequence.AppendCallback( IncrementalSelected );
+			}
 		}
 
 		private void LoadNewLevel()
