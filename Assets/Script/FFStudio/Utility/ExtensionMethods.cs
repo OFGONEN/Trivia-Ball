@@ -399,6 +399,11 @@ namespace FFStudio
 		{
 			return Random.Range( value.x, value.y );
 		}
+
+		public static int ReturnRandom( this Vector2Int value )
+		{
+			return Random.Range( value.x, value.y + 1 );
+		}
 	}
 }
 

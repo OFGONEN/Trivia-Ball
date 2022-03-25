@@ -30,10 +30,11 @@ namespace FFStudio
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_enemy_color;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_default_power;
 		[ BoxGroup( "Dsgn Ball" ) ] public int ball_default_health;
-
-
 	// Game Settings
-        [ FoldoutGroup( "Bar" )   		] public float bar_width;
+		[ FoldoutGroup( "Game" ), MinMaxSlider( 3, 10 ) ] public Vector2Int ball_currency;
+        [ FoldoutGroup( "Game" ) ] public float bar_width;
+		[ FoldoutGroup( "Game" ) ] public float ai_answer_cooldown;
+		[ FoldoutGroup( "Game" ) ] public int keyboard_max_characterLimit;
 
 		[ FoldoutGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ FoldoutGroup( "Ball" )        ] public bool ball_spawn_trigger;
@@ -41,9 +42,7 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
 		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
 
-		[ FoldoutGroup( "AI" )          ] public float ai_answer_cooldown;
 
-		[ FoldoutGroup( "Keyboard" )    ] public int keyboard_max_characterLimit;
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;

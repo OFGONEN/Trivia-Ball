@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
+  notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
 --- !u!54 &6759183699175186187
 Rigidbody:
   m_ObjectHideFlags: 0

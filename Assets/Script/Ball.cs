@@ -10,6 +10,7 @@ public class Ball : MonoBehaviour
 {
 #region Fields
     [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
+    [ BoxGroup( "Shared" ) ] public SharedIntNotifier notifier_currency;
 
     // Private Fields \\
     private int ball_health;
@@ -64,6 +65,9 @@ public class Ball : MonoBehaviour
 
     public void OnCollision_Bar( Bar bar )
     {
+		notifier_currency.SharedValue += Mathf.RoundToInt( GameSettings.Instance.ball_currency.ReturnRandom() * CurrentLevelData.Instance.levelData.currency_cofactor );
+        //todo spawn pop UI
+
 		ball_health_current -= 1;
 
 		var newColor = Color.Lerp( ball_color,
