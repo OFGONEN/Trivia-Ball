@@ -43,11 +43,10 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
 		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
 
-
-
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
 
+        [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_wait_duration;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the movement for ui element"          ) ] public float ui_Entity_Move_TweenDuration;
         [ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the fading for ui element"            ) ] public float ui_Entity_Fade_TweenDuration;
 		[ FoldoutGroup( "UI Settings" ), Tooltip( "Duration of the scaling for ui element"           ) ] public float ui_Entity_Scale_TweenDuration;

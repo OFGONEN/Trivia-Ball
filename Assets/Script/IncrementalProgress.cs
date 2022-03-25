@@ -13,7 +13,9 @@ public abstract class IncrementalProgress< T > : ScriptableObject
     [ BoxGroup( "Setup" ), SerializeField ] protected T incremental_default; //Info same as game_setting value 
     [ BoxGroup( "Setup" ), SerializeField ] protected IncrementalData< T >[] incremeantal_data;
 
-    public string ReturnCost()
+	public int Cost => incremeantal_data[ ReturnIndex() ].incremental_cost;
+
+	public string ReturnCost()
     {
 		var index = ReturnIndex();
 		return incremeantal_data[ index ].incremental_cost.ToString();

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: incremental_power
   m_EditorClassIdentifier: 
   notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
-  incremental_name: 
-  incremental_default: 0
-  incremeantal_data: []
+  incremental_name: power
+  incremental_default: 1
+  incremeantal_data:
+  - incremental_cost: 10
+    incremental_value_text: vur gitsin
+    incremental_value: 0.2

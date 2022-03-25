@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: incremental_health
   m_EditorClassIdentifier: 
   notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
-  incremental_name: 
-  incremental_default: 0
-  incremeantal_data: []
+  incremental_name: health
+  incremental_default: 2
+  incremeantal_data:
+  - incremental_cost: 10
+    incremental_value_text: turp gibi
+    incremental_value: 1
