@@ -15,6 +15,8 @@ namespace FFStudio
         [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
+        [ BoxGroup( "UI Elements" ) ] public Button incremental_left;
+        [ BoxGroup( "UI Elements" ) ] public Button incremental_right;
 
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
@@ -66,6 +68,9 @@ namespace FFStudio
 			question_image.color = question_image.color.SetAlpha( 0 );
 			question_text.color = question_text.color.SetAlpha( 0 );
 			question_text.text   = string.Empty;
+
+			incremental_left.interactable = false;
+			incremental_right.interactable = false;
 		}
 #endregion
 
@@ -80,17 +85,50 @@ namespace FFStudio
 			sequence.AppendInterval( GameSettings.Instance.ai_answer_cooldown );
 			sequence.Append( answerBox_enemy.DOAnchorPosX( answerBox_enemy.sizeDelta.x, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
 		}
+
+        public void IncrementalSelected()
+        {
+			incremental_left.interactable  = false;
+			incremental_right.interactable = false;
+
+            //todo! quesiton 'u reveal et.
+
+			var left  = incremental_left.targetGraphic.rectTransform;
+			var right = incremental_right.targetGraphic.rectTransform;
+
+			var sequence = DOTween.Sequence();
+
+			sequence.Append( left.DOAnchorPosY(
+							-( left.anchoredPosition.y + left.sizeDelta.y ),
+							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+ 					.Join( right.DOAnchorPosY(
+							-( right.anchoredPosition.y + right.sizeDelta.y ),
+							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+					.AppendCallback( levelRevealedEvent.Raise )
+					.Append( question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( answerBox_player.DOMoveX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+
+			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
+			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
+			elephantLevelEvent.Raise();
+		}
 #endregion
 
 #region Implementation
         private void LevelLoadedResponse()
         {
-			question_text.text = CurrentLevelData.Instance.levelData.question;
+			var levelData = CurrentLevelData.Instance.levelData;
+			question_text.text = levelData.question;
 
 			var sequence = DOTween.Sequence()
 								.Append( level_loadingBar_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-								.AppendCallback( () => tapInputListener.response = StartLevel );
+								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+
+			                    if( levelData.showIncremantal )
+								    sequence.AppendCallback( () => tapInputListener.response = ShowIncremental );
+                                else
+								    sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
 			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 
@@ -140,7 +178,8 @@ namespace FFStudio
 
         private void NewLevelLoaded()
         {
-			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			var currentLevel = CurrentLevelData.Instance;
+			level_count_text.text = "Level " + currentLevel.currentLevel_Shown;
 
 			level_information_text.text = "Tap to Start";
 
@@ -150,8 +189,12 @@ namespace FFStudio
 
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
-					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-					.AppendCallback( () => tapInputListener.response = StartLevel );
+					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
+
+			if( currentLevel.levelData.showIncremantal )
+				sequence.AppendCallback( () => tapInputListener.response = ShowIncremental ); 
+           else
+				sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
             // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
             // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
@@ -176,6 +219,31 @@ namespace FFStudio
 			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
 			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
 			elephantLevelEvent.Raise();
+		}
+
+        private void ShowIncremental()
+        {
+			var left  = incremental_left.targetGraphic.rectTransform;
+			var right = incremental_right.targetGraphic.rectTransform;
+
+			tutorialObjects.gameObject.SetActive( false );
+			tapInputListener.response = ExtensionMethods.EmptyMethod;
+
+			var sequence = DOTween.Sequence();
+
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+					.Append( left.DOAnchorPosY(
+							-left.anchoredPosition.y - left.sizeDelta.y,
+							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+ 					.Join( right.DOAnchorPosY(
+							-right.anchoredPosition.y - right.sizeDelta.y,
+							GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+					.AppendCallback( () =>
+                        {
+							incremental_left.interactable = true;
+							incremental_right.interactable = true;
+						} );
 		}
 
 		private void LoadNewLevel()
