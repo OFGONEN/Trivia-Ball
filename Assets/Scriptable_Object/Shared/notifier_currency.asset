@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de7a21fc555af4466bfd2a670aa1f56e, type: 3}
-  m_Name: incremental_power
+  m_Script: {fileID: 11500000, guid: 28cf0814dc53c5c4eb6fa46c2f505658, type: 3}
+  m_Name: notifier_currency
   m_EditorClassIdentifier: 
-  notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
-  incremental_name: 
-  incremental_default: 0
-  incremeantal_data: []
+  sharedValue: 0
