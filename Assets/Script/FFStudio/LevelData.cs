@@ -15,6 +15,7 @@ namespace FFStudio
 		[ BoxGroup( "Setup" ), ValueDropdown( "SceneList" ), LabelText( "Scene Index" ) ] public int scene_index;
         [ BoxGroup( "Setup" ), LabelText( "Override As Active Scene" ) ] public bool scene_overrideAsActiveScene;
 
+        [ BoxGroup( "Level Dsgn" ) ] public bool showIncremantal;
         [ BoxGroup( "Level Dsgn" ) ] public string question;
         [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
 
