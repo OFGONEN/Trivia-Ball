@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedDataNotifier: {fileID: 11400000, guid: 57c058e30000e478d8d1ac4137a2b9d2, type: 2}
+  ui_Text: {fileID: 3218586618077526254}
 --- !u!1 &873459570224328476
 GameObject:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ GameObject:
   - component: {fileID: 4603967748021538550}
   - component: {fileID: 5603010082134296640}
   m_Layer: 5
-  m_Name: image_questionBox
+  m_Name: questionBox_player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -386,3 +387,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedDataNotifier: {fileID: 11400000, guid: 57c058e30000e478d8d1ac4137a2b9d2, type: 2}
+  ui_Text: {fileID: 8495501017831177100}

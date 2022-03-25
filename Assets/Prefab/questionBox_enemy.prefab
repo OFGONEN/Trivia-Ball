@@ -148,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedDataNotifier: {fileID: 11400000, guid: 8eb811bfa99b64742a4950811f26b07b, type: 2}
+  ui_Text: {fileID: 3218586618077526254}
 --- !u!1 &873459570224328476
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,3 +387,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedDataNotifier: {fileID: 11400000, guid: 8eb811bfa99b64742a4950811f26b07b, type: 2}
+  ui_Text: {fileID: 8495501017831177100}
