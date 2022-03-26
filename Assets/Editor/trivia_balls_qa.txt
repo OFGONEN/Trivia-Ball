@@ -1,0 +1,148 @@
+#Name a color in the rainbow
+red
+green
+turquoise
+indigo
+orange
+yellow
+blue
+#Name a gaming console
+sega
+atari
+nintendo
+playstation
+gameboy
+xbox
+mastersystem
+colecovision
+odyssey
+#Name a continent
+asia
+africa
+europe
+australia
+antarctica
+north america
+south america
+#Name a country in Europe
+russia
+germany
+united kingdom	
+france	
+italy	
+spain	
+ukraine	
+poland	
+romania	
+netherlands	
+belgium	
+czechia
+greece
+turkey	
+portugal	
+sweden	
+hungary	
+belarus	
+uustria	
+serbia	
+switzerland	
+bulgaria	
+denmark	
+finland	
+slovakia
+norway	
+ireland	
+croatia	
+moldova	
+bosnia and herzegovina	
+albania	
+lithuania
+north macedonia	
+slovenia
+latvia	
+estonia	
+montenegro
+luxembourg
+malta	
+iceland
+andorra
+monaco
+liechtenstein	
+san marino	
+holy see
+#Name a green fruit
+grape
+avocado
+gooseberry
+apple
+kiwi
+pear
+lime
+#Name a video game genre
+fps
+mmorpg
+rpg
+rts
+action
+horror
+sports
+shooter
+racing
+adventure
+fighting
+puzzle
+role playing
+simulation
+strategy
+#name a day in the week
+monday
+tuesday
+wednesday
+thursday
+friday
+saturday
+sunday
+#Name a casino game
+baccarat
+blackjack
+roulette
+poker
+slot machine
+bingo
+keno
+pachinko
+#name a 2D geometric shape
+circle
+square
+triangle
+rectangle
+pentagon
+hexagon
+octagon
+nonagon
+#Name a month in the year
+january
+february
+march
+april
+may
+june
+july
+august
+september
+october
+november
+december
+#Name an ocean
+arctic
+north atlantic
+south atlantic
+north pasific
+atlantic
+pasific
+mediterranaen
+indian
+southern
+
+
+
