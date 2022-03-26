@@ -54,8 +54,9 @@ norway
 ireland	
 croatia	
 moldova	
-bosnia and herzegovina	
-albania	
+bosnia
+herzegovina
+albania
 lithuania
 north macedonia	
 slovenia

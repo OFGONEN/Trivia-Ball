@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using FFStudio;
 using Sirenix.OdinInspector;
 
 namespace FFEditor 
@@ -17,6 +18,8 @@ namespace FFEditor
 		[ Button() ]
         public void ExtractData()
         {
+			question_datas.Clear();
+
 			var text = question_text.text;
 
 			var index = 1;
@@ -56,7 +59,69 @@ namespace FFEditor
 					return;
                 else
 					index = nextQuestion + 1;
+
+				LogInfo();
 			}
+		}
+
+        [ Button() ]
+        public void LogInfo()
+        {
+            //TOTAL ANSWER
+			var totalAnswerCount = 0;
+
+            for( var i = 0; i < question_datas.Count; i++ )
+            {
+				totalAnswerCount += question_datas[ i ].question_answers.Count;
+			}
+
+            FFLogger.Log( $"Total Question: {question_datas.Count}\nTotal Answer Count: {totalAnswerCount}" );
+
+            // MOST LONG QUESTION
+			var mostLongQuestion = string.Empty;
+			var mostLongQuestion_Count = 0;
+			var mostLongQuestion_Index = 0;
+
+            for( var i = 0; i < question_datas.Count; i++ )
+            {
+                if( question_datas[ i ].question.Length > mostLongQuestion_Count )
+                {
+					mostLongQuestion = question_datas[ i ].question;
+					mostLongQuestion_Count = mostLongQuestion.Length;
+			        mostLongQuestion_Index = i;
+				}
+			}
+
+            FFLogger.Log( $"Most Long Question: {mostLongQuestion}\nLetter Count: {mostLongQuestion_Count}" );
+
+            // MOST LONG ANSWER
+
+			var mostLongAnswer = string.Empty;
+			var mostLongAnswerQuestion = string.Empty;
+			var mostLongAnswer_Count = 0;
+			var mostLongAnswer_Index = 0;
+			var mostLongAnswerQuestion_Index = 0;
+
+            for( var x = 0; x < question_datas.Count; x++ )
+            {
+				var data = question_datas[ x ];
+
+				for( var y = 0; y < data.question_answers.Count; y++ )
+                {
+					if( data.question_answers[ y ].Length > mostLongAnswer_Index )
+					{
+						mostLongAnswer = data.question_answers[ y ];
+			            mostLongAnswerQuestion = data.question;
+						mostLongAnswer_Count = mostLongAnswer.Length;
+						mostLongAnswer_Index = y;
+			            mostLongAnswerQuestion_Index = x;
+					}
+				}
+
+			}
+
+            FFLogger.Log( $"Most Long Answer: {mostLongAnswer}\nLetter Count: {mostLongAnswer_Count}" );
+            FFLogger.Log( $"\nQuestion of {mostLongAnswerQuestion} Index: {mostLongAnswerQuestion_Index}" );
 		}
 	}
 
