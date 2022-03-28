@@ -15,6 +15,7 @@ MonoBehaviour:
   scene_index: 1
   scene_overrideAsActiveScene: 0
   showIncremantal: 0
+  incremental_index: 0
   currency_cofactor: 1
   question: "Name a country in Europe\r"
   question_answers:
@@ -67,3 +68,4 @@ MonoBehaviour:
   ai_answer_rate: {x: 2.5527515, y: 6.731486}
   ai_ball_power: 1
   ai_ball_health: 2
+  bar_movement_drag: 1
