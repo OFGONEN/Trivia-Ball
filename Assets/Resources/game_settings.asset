@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  maxLevelCount: 1
+  maxLevelCount: 4
   bar_movement_drag: 1
   ball_spawn_letterCount: 2
   ball_targetColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
