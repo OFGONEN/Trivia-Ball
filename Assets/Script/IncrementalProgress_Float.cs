@@ -15,4 +15,9 @@ public class IncrementalProgress_Float : IncrementalProgress< float >
 
 		PlayerPrefs.SetFloat( incremental_name, value + incremeantal_data[ index ].incremental_value );
 	}
+
+	private void OnValidate()
+	{
+		incremental_default = GameSettings.Instance.ball_default_power;
+	}
 }
