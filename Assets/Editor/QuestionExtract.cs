@@ -142,6 +142,24 @@ namespace FFEditor
             FFLogger.Log( $"Question of {mostLongAnswerQuestion} Index: {mostLongAnswerQuestion_Index}" );
             FFLogger.Log( $"Most Long Answer: {mostLongAnswer}\nLetter Count: {mostLongAnswer_Count}" );
 		}
+
+		[ Button( "SetLevelData" ) ]
+		public void UpdateLevelData()
+		{
+			for( var i = 0; i < question_datas.Count; i++ )
+			{
+				var levelData = Resources.Load< LevelData >( "level_data_" + ( i + 1 ) );
+				if( levelData )
+				{
+					this.levelData = levelData;
+					ExtractToLevelData( i );
+				}
+				else
+					break;
+			}
+
+			AssetDatabase.SaveAssets();
+		}
 	}
 
     [ System.Serializable ]
