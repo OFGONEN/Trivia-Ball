@@ -46,6 +46,11 @@ public abstract class IncrementalProgress< T > : ScriptableObject
 
 	protected int ReturnIndex()
     {
-		return PlayerPrefs.GetInt( incremental_name + "_index", 0 );
+#if UNITY_EDITOR
+		var index = CurrentLevelData.Instance.levelData.incremental_index;
+		if( index < 0 || index >= incremeantal_data.Length )
+			FFLogger.LogError( "Incremental Index is out of bonds", this );
+#endif
+		return Mathf.Clamp( CurrentLevelData.Instance.levelData.incremental_index, 0, incremeantal_data.Length - 1 );
     }
 }

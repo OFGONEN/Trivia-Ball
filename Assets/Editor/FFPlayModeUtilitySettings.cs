@@ -5,7 +5,6 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
-using Sirenix.OdinInspector;
 
 namespace FFEditor
 {
