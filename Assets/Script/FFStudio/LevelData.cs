@@ -6,6 +6,7 @@ using Sirenix.OdinInspector;
 using System.IO;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 
 namespace FFStudio
 {
@@ -18,7 +19,7 @@ namespace FFStudio
         [ BoxGroup( "Level Dsgn" ) ] public bool showIncremantal;
         [ BoxGroup( "Level Dsgn" ) ] public float currency_cofactor = 1f;
         [ BoxGroup( "Level Dsgn" ) ] public string question;
-        [ BoxGroup( "Level Dsgn" ), HideInInspector ] public string[] question_answers;
+        [ BoxGroup( "Level Dsgn" ) ] public string[] question_answers;
 
         [ BoxGroup( "AI" ), MinMaxSlider( 0, 10f ) ] public Vector2 ai_answer_rate;
         [ BoxGroup( "AI" ), Range( 0, 5 ) ]  public float ai_ball_power = 1f;
@@ -43,9 +44,8 @@ namespace FFStudio
 		{
 			return question_answers_dictionary.ContainsKey( hashCode );
 		}
-#if UNITY_EDITOR
-		[ ShowInInspector ] private List< string > question_answers_editor = new List< string >();
 
+#if UNITY_EDITOR
 		private static IEnumerable SceneList()
         {
 			var list = new ValueDropdownList< int >();
@@ -58,14 +58,17 @@ namespace FFStudio
 			return list;
 		}
 
-		private void OnValidate()
+		[ Button() ]
+		private void CompileAnswers()
 		{
-			question_answers = new string[ question_answers_editor.Count ];
+			EditorUtility.SetDirty( this );
 
-			for( var i = 0; i < question_answers_editor.Count; i++ )
+			for( var i = 0; i < question_answers.Length; i++ )
 			{
-				question_answers[ i ] = question_answers_editor[ i ].RemoveChar( ' ' ).ToLower();
+				question_answers[ i ] = question_answers[ i ].RemoveChar( ' ' ).ToLower();
 			}
+
+			AssetDatabase.SaveAssets();
 		}
 
 		[ Button() ]
