@@ -59,19 +59,6 @@ namespace FFStudio
 		}
 
 		[ Button() ]
-		private void CompileAnswers()
-		{
-			EditorUtility.SetDirty( this );
-
-			for( var i = 0; i < question_answers.Length; i++ )
-			{
-				question_answers[ i ] = question_answers[ i ].RemoveChar( ' ' ).ToLower();
-			}
-
-			AssetDatabase.SaveAssets();
-		}
-
-		[ Button() ]
 		private void LogAnswers()
 		{
 			for( var i = 0; i < question_answers.Length; i++ )

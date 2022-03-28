@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 using UnityEngine;
+using UnityEditor;
 using FFStudio;
 using Sirenix.OdinInspector;
 
@@ -14,6 +15,7 @@ namespace FFEditor
 	{
 		public TextAsset question_text;
 		public List< QuestionData > question_datas = new List< QuestionData >();
+		public LevelData levelData;
 
 		[ Button() ]
         public void ExtractData()
@@ -122,6 +124,22 @@ namespace FFEditor
 
             FFLogger.Log( $"Most Long Answer: {mostLongAnswer}\nLetter Count: {mostLongAnswer_Count}" );
             FFLogger.Log( $"\nQuestion of {mostLongAnswerQuestion} Index: {mostLongAnswerQuestion_Index}" );
+		}
+
+		[ Button() ]
+		private void ExtractToLevelData( int questionIndex )
+		{
+			EditorUtility.SetDirty( levelData );
+
+			levelData.question = question_datas[ questionIndex ].question;
+			levelData.question_answers = question_datas[ questionIndex ].question_answers.ToArray();
+
+			for( var i = 0; i < levelData.question_answers.Length; i++ )
+			{
+				levelData.question_answers[ i ] = levelData.question_answers[ i ].RemoveChar( ' ' ).ToLower();
+			}
+
+			AssetDatabase.SaveAssets();
 		}
 	}
 
