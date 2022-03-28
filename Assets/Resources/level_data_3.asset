@@ -16,8 +16,15 @@ MonoBehaviour:
   scene_overrideAsActiveScene: 0
   showIncremantal: 0
   currency_cofactor: 1
-  question: 'Name a continent '
-  question_answers: []
+  question: "Name a continent\r"
+  question_answers:
+  - asia
+  - africa
+  - europe
+  - australia
+  - antarctica
+  - northamerica
+  - southamerica
   ai_answer_rate: {x: 1.314879, y: 2.9065742}
   ai_ball_power: 1
   ai_ball_health: 2

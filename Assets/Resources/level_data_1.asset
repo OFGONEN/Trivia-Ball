@@ -16,8 +16,15 @@ MonoBehaviour:
   scene_overrideAsActiveScene: 0
   showIncremantal: 0
   currency_cofactor: 1
-  question: 'Name a color in the rainbow '
-  question_answers: []
+  question: "Name a color in the rainbow\r"
+  question_answers:
+  - red
+  - green
+  - turquoise
+  - indigo
+  - orange
+  - yellow
+  - blue
   ai_answer_rate: {x: 1.314879, y: 2.9065742}
   ai_ball_power: 1
   ai_ball_health: 2
