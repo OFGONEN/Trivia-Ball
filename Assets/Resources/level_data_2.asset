@@ -27,6 +27,6 @@ MonoBehaviour:
   - mastersystem
   - colecovision
   - odyssey
-  ai_answer_rate: {x: 1.314879, y: 2.9065742}
+  ai_answer_rate: {x: 2.5527515, y: 6.731486}
   ai_ball_power: 1
   ai_ball_health: 2
