@@ -144,6 +144,410 @@ pasific
 mediterranaen
 indian
 southern
-
-
-
+#Name a social media platform
+vk
+tumblr
+tiktok
+twitter
+wattpad
+instagram
+facebook
+tinder
+#Name a nba team
+bucks
+bulls
+cavaliers
+celtics
+clippers
+grizzlies
+hawks
+heat
+hornets
+jazz
+kings
+knicks
+lakers
+magic
+maverics
+nets
+nuggets
+pacers
+pelicans
+pistons
+raptors
+rockets
+spurs
+suns
+thunder
+timberwolves
+trail blazers
+warriors
+wizards
+#name a us state containing w
+delaware
+hawaii
+iowa
+new hampshire
+new jersey
+new mexico
+new york
+washington
+west virginia
+wisconsin
+wyoming
+#name a human organ
+lungs
+bladder
+intestines
+brain
+liver
+heart
+kidneys
+stomach
+pancreas
+spleen
+#name a character from lotr
+aragorn
+arwen
+frodo baggins
+bilbo baggins
+boromir
+tom bombadil
+elendil
+elrond
+eomer
+eowyn
+faramir
+galadriel
+samwise gamgee
+sam
+merry
+pippin
+melkor
+gandalf
+gimli
+glorfindel
+gollum
+isildur
+legolas
+nazgul
+radagast
+saruman
+sauron
+theoden
+pippin took
+#name a horoscope sign
+aquarius
+pisces
+aries
+taurus
+gemini
+cancer
+leo
+virgo
+libra
+scorpio
+sagittarius
+capricorn
+#name a batman character
+batman
+james gordon
+dick grayson
+alfred pennyworth
+joker
+tim drake
+cat woman
+jason todd
+penguin
+two face
+barbara gordon
+riddler
+scarecrow
+bruce wayne
+kathy kane
+harley quinn
+lex luthor
+bane
+robin
+nightwing
+bat girl
+deathstroke
+#name a disney princess
+snow white
+cinderella
+aurora
+ariel
+belle
+jasmine
+pocahontas
+mulan
+tiana
+rapunzel
+merida
+moana
+raya
+mirabel
+tinker bell
+esmeralda
+elsa
+anna
+#name a common flower
+rose
+lily
+daisy
+rosemary
+nightshade
+acanthus
+acacia
+buttercup
+chrysanthemum
+delphinium
+iris
+lavender
+marigold
+orchid
+petunia
+sunflower
+snapdragon
+violet
+tulip
+zinnia
+#name an animal in a nfl team
+seahawk
+bronco
+eagle
+falcon
+bear
+horse
+grizzly
+bengal
+raven
+cardinal
+jaguar
+panther
+lion
+colt
+ram
+dolphin
+#name a phone brand
+acer
+alcatel
+apple
+asus
+benq
+blackberry
+google
+htc
+lenovo
+lg
+oppo
+xiaomi
+samsung
+huawei
+nokia
+sony
+motorola
+realme
+#name a dinosaur name
+tyrannosaurus rex
+pterodactyl
+velociraptor
+baryonyx
+raptor
+lirainosaurus
+iguanodon
+styracosaurus
+raptorex
+brontosaurus
+mosasaurus
+diplodocus
+triceratops
+stegosaurus
+spinosaurus
+brachiosaurus
+allosaurus
+#name a month with 31 days
+january
+march
+may
+july
+august
+october
+december
+#name a famous gemstone
+alexandrite
+amber
+amethyst
+ametrine
+citrine
+diamond
+emerald
+iolite
+jade
+kunzite
+lapis lazuli
+morganite
+opal
+pearl
+peridot
+ruby
+sapphire
+spine
+sunstone
+topaz
+tourmaline
+turquoise
+zircon
+#name a classical composer
+beethoven
+bach
+mozart
+brahms
+wagner
+debussy
+tchaikovsky
+chopin
+haydn
+vivaldi
+schubert
+schumann
+rahmaninov
+stravinsky
+#name a natural disaster
+avalanche
+blizzard
+cold wave
+drought
+earthquake
+flood
+flash flood
+storm
+hailstorm
+heat wave
+ice storm
+impact event
+landslide
+mudslide
+sinkhole
+solar flare
+subsidence
+thunderstorm
+tornado
+tsunami
+cyclone
+volcanic eruption
+volcano
+wildfire
+#name a car manufacturer
+koller
+ford
+fiat
+porsche
+imperia
+litex
+apex motors
+chery
+skoda
+bugatti
+citroen
+audi
+bmw
+mercedes benz
+mercedes
+opel
+alfa romeo
+ducati
+ferrari
+lamborghini
+maserati
+pagani
+acura
+honda
+isuzu
+kawasaki
+lexus
+mazda
+mitsubishi
+nissan
+subaru
+renault
+dacia
+lada
+hyundai
+kia
+tata
+ssanyong
+seat
+koenigsegg
+scania
+volvo
+tofas
+bmc
+bentley
+volkswagen
+aston martin
+jaguar
+mclaren
+land rover
+range rover
+cadillac
+chevrolet
+chrysler
+dodge
+jeep
+lincoln
+#name a pokemon
+pikachu
+mew
+abra
+alakazam
+arbok
+arcanine
+blastoise
+bulbasaur
+butterfree
+caterpie
+charizard
+charmeleon
+dragonite
+dratini
+diglett
+eevee
+geodude
+growlithe
+hitmonchan
+ivysaur
+jigglypuff
+jynx
+kadabra
+lapras
+magikarp
+magmar
+onix
+pidgeot
+pidgeotto
+ponyta
+raichu
+rapidash
+sandshrew
+scyther
+snorlax
+togepi
+wartortle
+weezing
+zapdos
+zubat
+#name a sport played on grass
+soccer
+football
+golf
+baseball
+croquet
+tennis
+rugby
+frisbee
+paintball
+kickball
+hunting
+field hockey
+cricket
