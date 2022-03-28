@@ -13,23 +13,22 @@ MonoBehaviour:
   m_Name: game_settings
   m_EditorClassIdentifier: 
   maxLevelCount: 4
-  bar_movement_drag: 1
-  ball_spawn_letterCount: 2
-  ball_targetColor: {r: 0.3207547, g: 0.3207547, b: 0.3207547, a: 1}
+  ball_spawn_letterCount: 3
+  ball_targetColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
   ball_launch_power: 5
   ball_launch_power_torque: 1
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
   ball_default_power: 1
   ball_default_health: 2
-  ball_currency: {x: 3, y: 5}
-  ball_currency_textSize: {x: 0.4116988, y: 1.1303598}
+  ball_currency: {x: 3, y: 6}
+  ball_currency_textSize: {x: 0.5040531, y: 1.2455785}
   bar_width: 3
   ai_answer_cooldown: 2
-  keyboard_max_characterLimit: 30
+  keyboard_max_characterLimit: 20
   ball_spawn_layer: 2
   ball_spawn_trigger: 0
-  ball_spawn_delay: 0.2
+  ball_spawn_delay: 0.35
   ball_player_direction: 1
   ball_enemy_direction: -1
   debug_ui_text_float_height: 1
