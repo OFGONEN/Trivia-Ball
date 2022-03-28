@@ -5,6 +5,7 @@ using Sirenix.OdinInspector;
 using System.Collections;
 using UnityEngine.SceneManagement;
 using System.IO;
+using Sirenix.OdinInspector;
 
 namespace FFEditor
 {
@@ -23,6 +24,17 @@ namespace FFEditor
 #endregion
 
 #region API
+		[ Button() ]
+		public void UpdateInt( string name, int value )
+		{
+			PlayerPrefs.SetInt( name, value );
+		}
+
+		[ Button() ]
+		public void UpdateFloat( string name, float value )
+		{
+			PlayerPrefs.SetFloat( name, value );
+		}
 #endregion
 
 #region Implementation
