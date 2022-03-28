@@ -24,6 +24,7 @@ namespace FFStudio
         [ BoxGroup( "AI" ), MinMaxSlider( 0, 10f ) ] public Vector2 ai_answer_rate;
         [ BoxGroup( "AI" ), Range( 0, 5 ) ]  public float ai_ball_power = 1f;
         [ BoxGroup( "AI" ), Range( 0, 10 ) ] public int ai_ball_health  = 2;
+        [ BoxGroup( "Bar" ) ] public float bar_movement_drag = 1f;
 
 		private Dictionary< int, string > question_answers_dictionary;
 
