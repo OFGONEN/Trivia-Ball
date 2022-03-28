@@ -12,6 +12,8 @@ public class Bar : MonoBehaviour
 
 // Private Fields \\
     [ ShowInInspector, ReadOnly ] private float movement_force;
+    [ ShowInInspector, ReadOnly ] private float movement_drag;
+
 
 // Delegate
     private UnityMessage updateMethod;
@@ -36,6 +38,7 @@ public class Bar : MonoBehaviour
     public void StartMovement()
     {
 		updateMethod = Movement;
+		movement_drag = CurrentLevelData.Instance.levelData.bar_movement_drag;
 	}
 
     public void StopMovement()
@@ -60,7 +63,7 @@ public class Bar : MonoBehaviour
 #region Implementation
     private void Movement()
     {
-		var step = Time.deltaTime * GameSettings.Instance.bar_movement_drag; // 0.1
+		var step = Time.deltaTime * movement_drag;
 
         if( step >= Mathf.Abs( movement_force ) )
 			step = movement_force;

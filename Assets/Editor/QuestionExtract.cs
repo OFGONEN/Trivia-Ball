@@ -18,6 +18,24 @@ namespace FFEditor
 		public LevelData levelData;
 
 		[ Button() ]
+		private void ExtractToLevelData( int questionIndex )
+		{
+			EditorUtility.SetDirty( levelData );
+
+			questionIndex = Mathf.Clamp( questionIndex, 0, question_datas.Count - 1 );
+
+			levelData.question = question_datas[ questionIndex ].question;
+			levelData.question_answers = question_datas[ questionIndex ].question_answers.ToArray();
+
+			for( var i = 0; i < levelData.question_answers.Length; i++ )
+			{
+				levelData.question_answers[ i ] = levelData.question_answers[ i ].RemoveChar( ' ' ).ToLower();
+			}
+
+			AssetDatabase.SaveAssets();
+		}
+
+		[ Button() ]
         public void ExtractData()
         {
 			question_datas.Clear();
@@ -62,7 +80,6 @@ namespace FFEditor
                 else
 					index = nextQuestion + 1;
 
-				LogInfo();
 			}
 		}
 
@@ -122,24 +139,8 @@ namespace FFEditor
 
 			}
 
+            FFLogger.Log( $"Question of {mostLongAnswerQuestion} Index: {mostLongAnswerQuestion_Index}" );
             FFLogger.Log( $"Most Long Answer: {mostLongAnswer}\nLetter Count: {mostLongAnswer_Count}" );
-            FFLogger.Log( $"\nQuestion of {mostLongAnswerQuestion} Index: {mostLongAnswerQuestion_Index}" );
-		}
-
-		[ Button() ]
-		private void ExtractToLevelData( int questionIndex )
-		{
-			EditorUtility.SetDirty( levelData );
-
-			levelData.question = question_datas[ questionIndex ].question;
-			levelData.question_answers = question_datas[ questionIndex ].question_answers.ToArray();
-
-			for( var i = 0; i < levelData.question_answers.Length; i++ )
-			{
-				levelData.question_answers[ i ] = levelData.question_answers[ i ].RemoveChar( ' ' ).ToLower();
-			}
-
-			AssetDatabase.SaveAssets();
 		}
 	}
 

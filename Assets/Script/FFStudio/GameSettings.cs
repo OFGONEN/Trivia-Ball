@@ -20,8 +20,6 @@ namespace FFStudio
         [ HideInInspector ] public int maxLevelCount;
 
 	// Level Design
-        [ BoxGroup( "Dsgn Bar" ) ] public float bar_movement_drag;
-
 		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_letterCount;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_targetColor;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power;
