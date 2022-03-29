@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  showIncremantal: 0
+  showIncremantal: 1
   incremental_index: 0
   currency_cofactor: 1
   question: "Name a continent\r"
@@ -26,7 +26,7 @@ MonoBehaviour:
   - antarctica
   - northamerica
   - southamerica
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
-  ai_ball_health: 2
-  bar_movement_drag: 1
+  ai_answer_rate: {x: 2.5527515, y: 6.2620296}
+  ai_ball_power: 0.6
+  ai_ball_health: 1
+  bar_movement_drag: 3
