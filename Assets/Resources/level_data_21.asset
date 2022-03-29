@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  showIncremantal: 0
+  showIncremantal: 1
   incremental_index: 0
-  currency_cofactor: 1
+  currency_cofactor: 2
   question: "name an animal in a nfl team\r"
   question_answers:
   - seahawk
@@ -35,7 +35,7 @@ MonoBehaviour:
   - colt
   - ram
   - dolphin
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
+  ai_answer_rate: {x: 2.8483138, y: 6.731486}
   ai_ball_power: 1
   ai_ball_health: 2
-  bar_movement_drag: 1
+  bar_movement_drag: 4
