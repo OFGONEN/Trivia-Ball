@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a385bd3b4416492409284c9a366cb52a, type: 3}
   m_Name: game_settings
   m_EditorClassIdentifier: 
-  maxLevelCount: 4
-  ball_spawn_letterCount: 3
+  maxLevelCount: 30
+  ball_spawn_letterCount: 1
   ball_targetColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
-  ball_launch_power: 5
+  ball_launch_power: 3.5
   ball_launch_power_torque: 1
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}

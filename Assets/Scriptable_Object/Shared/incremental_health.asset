@@ -16,6 +16,6 @@ MonoBehaviour:
   incremental_name: health
   incremental_default: 2
   incremeantal_data:
-  - incremental_cost: 10
-    incremental_value_text: turp gibi
+  - incremental_cost: 25000
+    incremental_value_text: ball health
     incremental_value: 1

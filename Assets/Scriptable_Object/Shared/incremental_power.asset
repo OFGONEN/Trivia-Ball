@@ -16,6 +16,6 @@ MonoBehaviour:
   incremental_name: power
   incremental_default: 1
   incremeantal_data:
-  - incremental_cost: 10
-    incremental_value_text: vur gitsin
-    incremental_value: 0.2
+  - incremental_cost: 100
+    incremental_value_text: hit power
+    incremental_value: 0.01
