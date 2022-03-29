@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLevelCount: 30
   ball_spawn_letterCount: 1
+  ball_spawn_offset: {x: 0, y: 0.5, z: 0}
   ball_targetColor: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
   ball_launch_power: 3.5
   ball_launch_power_torque: 1
@@ -29,6 +30,7 @@ MonoBehaviour:
   ball_spawn_layer: 2
   ball_spawn_trigger: 0
   ball_spawn_delay: 0.35
+  ball_spawn_punchScale_strength: {x: 0.5, y: 0.3, z: -0.2}
   ball_player_direction: 1
   ball_enemy_direction: -1
   debug_ui_text_float_height: 1

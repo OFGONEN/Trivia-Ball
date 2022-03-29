@@ -38,6 +38,9 @@ public class Spawner : MonoBehaviour
 		{
 			sequence.AppendCallback( onSingleBallSpawn.Invoke );
 			sequence.AppendCallback( () => SpawnBall( currency, direction, power, health, color ) );
+			sequence.Append( transform
+								.DOPunchScale( GameSettings.Instance.ball_spawn_punchScale_strength, GameSettings.Instance.ball_spawn_delay, 15 )
+								.SetEase( Ease.InOutElastic ) );
 			sequence.AppendInterval( GameSettings.Instance.ball_spawn_delay );
 		}
 	}
@@ -52,7 +55,7 @@ public class Spawner : MonoBehaviour
 	private void SpawnBall( bool currency, float direction, float power, int health, Color color )
 	{
 		var ball = pool_ball.GetEntity();
-		ball.Spawn( currency, transform.position, direction, power, health, color );
+		ball.Spawn( currency, transform.position + GameSettings.Instance.ball_spawn_offset, direction, power, health, color );
 
 		var position_bar = ( notifier_bar_transform.sharedValue as Transform ).position;
 

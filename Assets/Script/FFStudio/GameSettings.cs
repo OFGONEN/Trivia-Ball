@@ -21,6 +21,7 @@ namespace FFStudio
 
 	// Level Design
 		[ BoxGroup( "Dsgn Ball" ) ] public int ball_spawn_letterCount;
+		[ BoxGroup( "Dsgn Ball" ) ] public Vector3 ball_spawn_offset;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_targetColor;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power_torque;
@@ -38,6 +39,7 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ FoldoutGroup( "Ball" )        ] public bool ball_spawn_trigger;
 		[ FoldoutGroup( "Ball" )        ] public float ball_spawn_delay = 0.2f;
+		[ FoldoutGroup( "Ball" )        ] public Vector3 ball_spawn_punchScale_strength = Vector3.one;
 		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
 		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
 
