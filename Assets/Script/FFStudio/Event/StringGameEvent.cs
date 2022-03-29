@@ -1,6 +1,7 @@
 ﻿/* Created by and for usage of FF Studios (2021). */
 
 using UnityEngine;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
@@ -12,6 +13,13 @@ namespace FFStudio
         public void Raise( string value )
         {
 			eventValue = value;
+			Raise();
+		}
+
+        [ Button() ]
+        public void RaiseAsKeyboard()
+        {
+			eventValue = eventValue.RemoveChar( ' ' ).ToLower();
 			Raise();
 		}
     }

@@ -93,13 +93,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   eventPairs:
   - eventListener:
-      gameEvent: {fileID: 11400000, guid: f21048912f45f4f4ba5088a96779eb2f, type: 2}
+      gameEvent: {fileID: 11400000, guid: 28d976b368abc004a924d98b1751a17d, type: 2}
     unityEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6723235292880310022}
           m_TargetAssemblyTypeName: Ball, Assembly-CSharp
-          m_MethodName: LoadNewLevelResponse
+          m_MethodName: LevelCompleteResponse
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -110,13 +110,13 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - eventListener:
-      gameEvent: {fileID: 11400000, guid: 0a3e52cd505ecfc4ba9ef153d4f3ba93, type: 2}
+      gameEvent: {fileID: 11400000, guid: ec850936269bc2e47b26cfebd8bdad97, type: 2}
     unityEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 6723235292880310022}
           m_TargetAssemblyTypeName: Ball, Assembly-CSharp
-          m_MethodName: LoadNewLevelResponse
+          m_MethodName: LevelCompleteResponse
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -187,7 +187,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: db89f8adc4449be40bd0058de44926a2, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

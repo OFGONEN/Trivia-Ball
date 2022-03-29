@@ -17,6 +17,7 @@ namespace FFStudio
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
         [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_left;
         [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_right;
+        [ BoxGroup( "UI Elements" ) ] public Button incremental_pass;
 
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
         [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
@@ -37,6 +38,7 @@ namespace FFStudio
         [ FoldoutGroup( "Base - Fired Events" ) ] public ElephantLevelEvent elephantLevelEvent;
 
         private RecycledSequence answerBox_enemy_sequence = new RecycledSequence();
+		private RectTransform incremental_pass_transform;
 #endregion
 
 #region Unity API
@@ -68,6 +70,9 @@ namespace FFStudio
 			question_image.color = question_image.color.SetAlpha( 0 );
 			question_text.color = question_text.color.SetAlpha( 0 );
 			question_text.text   = string.Empty;
+
+			incremental_pass_transform = incremental_pass.targetGraphic.rectTransform;
+			incremental_pass.interactable = false;
 		}
 #endregion
 
@@ -85,10 +90,14 @@ namespace FFStudio
 
         public void IncrementalSelected()
         {
+			var passButtonTarget = -( incremental_pass_transform.sizeDelta.y + incremental_pass_transform.anchoredPosition.y );
+			incremental_pass.interactable = false;
+
 			var sequence = DOTween.Sequence();
 
 			sequence.Append( incremental_left.GoDown() )
  					.Join( incremental_right.GoDown() )
+					.Join( incremental_pass_transform.DOAnchorPosY( passButtonTarget, GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
 					.AppendCallback( levelRevealedEvent.Raise )
 					.Append( question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Join( question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
@@ -211,15 +220,20 @@ namespace FFStudio
 			tutorialObjects.gameObject.SetActive( false );
 			tapInputListener.response = ExtensionMethods.EmptyMethod;
 
+			var passButtonTarget = -incremental_pass_transform.anchoredPosition.y - incremental_pass_transform.sizeDelta.y;
+			incremental_pass.interactable = true;
+
 			var sequence = DOTween.Sequence();
 
 			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					.Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.Append( incremental_left.GoUp() )
- 					.Join( incremental_right.GoUp() );
+ 					.Join( incremental_right.GoUp() )
+ 					.Join( incremental_pass_transform.DOAnchorPosY( passButtonTarget, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
 
 			if( !incremental_left.CanAfford() && !incremental_right.CanAfford() )
 			{
+				incremental_pass.interactable = false;
 				sequence.AppendInterval( GameSettings.Instance.ui_Entity_wait_duration );
 				sequence.AppendCallback( IncrementalSelected );
 			}

@@ -94,7 +94,7 @@ public class Ball : MonoBehaviour
             DeSpawn();
 	}
 
-    public void LoadNewLevelResponse()
+    public void LevelCompleteResponse()
     {
         ball_rigidbody.velocity        = Vector3.zero;
         ball_rigidbody.angularVelocity = Vector3.zero;
