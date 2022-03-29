@@ -1,8 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FFStudio;
 using DG.Tweening;
 using Sirenix.OdinInspector;
@@ -12,6 +11,7 @@ public class Spawner : MonoBehaviour
 #region Fields
     [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
     [ BoxGroup( "Shared" ) ] public SharedReferenceNotifier notifier_bar_transform;
+    [ BoxGroup( "Shared" ) ] public UnityEvent onSingleBallSpawn;
 
 	private RecycledSequence recycledSequence = new RecycledSequence();
 #endregion
@@ -36,6 +36,7 @@ public class Spawner : MonoBehaviour
 
 		for( var i = 0; i < count; i++ )
 		{
+			sequence.AppendCallback( onSingleBallSpawn.Invoke );
 			sequence.AppendCallback( () => SpawnBall( currency, direction, power, health, color ) );
 			sequence.AppendInterval( GameSettings.Instance.ball_spawn_delay );
 		}
