@@ -36,7 +36,7 @@ MonoBehaviour:
   - spinosaurus
   - brachiosaurus
   - allosaurus
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
-  ai_ball_health: 2
-  bar_movement_drag: 1
+  ai_answer_rate: {x: 5.804344, y: 7.64789}
+  ai_ball_power: 0.61
+  ai_ball_health: 1
+  bar_movement_drag: 5

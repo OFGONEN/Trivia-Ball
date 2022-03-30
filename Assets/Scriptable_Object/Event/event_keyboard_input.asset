@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canRaiseOtherEvents: 0
   eventsThatWillAlsoBeRaised: []
-  eventValue: november
+  eventValue: amethyst

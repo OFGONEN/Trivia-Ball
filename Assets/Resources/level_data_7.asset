@@ -16,7 +16,7 @@ MonoBehaviour:
   scene_overrideAsActiveScene: 0
   showIncremantal: 0
   incremental_index: 0
-  currency_cofactor: 1
+  currency_cofactor: 2
   question: "name a day in the week\r"
   question_answers:
   - monday

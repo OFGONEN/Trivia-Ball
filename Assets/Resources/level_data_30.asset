@@ -14,58 +14,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  showIncremantal: 0
+  showIncremantal: 1
   incremental_index: 0
   currency_cofactor: 1
-  question: "Name a country in Europe\r"
+  question: "name a sport played on grass\r"
   question_answers:
-  - russia
-  - germany
-  - unitedkingdom
-  - france
-  - italy
-  - spain
-  - ukraine
-  - poland
-  - romania
-  - netherlands
-  - belgium
-  - czechia
-  - greece
-  - turkey
-  - portugal
-  - sweden
-  - hungary
-  - belarus
-  - uustria
-  - serbia
-  - switzerland
-  - bulgaria
-  - denmark
-  - finland
-  - slovakia
-  - norway
-  - ireland
-  - croatia
-  - moldova
-  - bosnia
-  - herzegovina
-  - albania
-  - lithuania
-  - northmacedonia
-  - slovenia
-  - latvia
-  - estonia
-  - montenegro
-  - luxembourg
-  - malta
-  - iceland
-  - andorra
-  - monaco
-  - liechtenstein
-  - sanmarino
-  - holysee
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
+  - soccer
+  - football
+  - golf
+  - baseball
+  - croquet
+  - tennis
+  - rugby
+  - frisbee
+  - paintball
+  - kickball
+  - hunting
+  - fieldhockey
+  ai_answer_rate: {x: 3.5158045, y: 6.731486}
+  ai_ball_power: 0.83
   ai_ball_health: 2
-  bar_movement_drag: 1
+  bar_movement_drag: 3

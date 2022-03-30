@@ -16,7 +16,7 @@ MonoBehaviour:
   scene_overrideAsActiveScene: 0
   showIncremantal: 0
   incremental_index: 0
-  currency_cofactor: 1
+  currency_cofactor: 2
   question: "name a us state containing w\r"
   question_answers:
   - delaware
@@ -30,7 +30,7 @@ MonoBehaviour:
   - westvirginia
   - wisconsin
   - wyoming
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
+  ai_answer_rate: {x: 2.6893876, y: 6.731486}
+  ai_ball_power: 0.7
   ai_ball_health: 2
-  bar_movement_drag: 1
+  bar_movement_drag: 3

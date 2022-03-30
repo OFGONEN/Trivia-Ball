@@ -28,7 +28,7 @@ MonoBehaviour:
   - mediterranaen
   - indian
   - southern
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
+  ai_answer_rate: {x: 3.0390255, y: 5.740773}
+  ai_ball_power: 0.62
   ai_ball_health: 2
-  bar_movement_drag: 1
+  bar_movement_drag: 3

@@ -42,7 +42,7 @@ MonoBehaviour:
   - tourmaline
   - turquoise
   - zircon
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 1
+  ai_answer_rate: {x: 3.4840193, y: 6.731486}
+  ai_ball_power: 0.7
   ai_ball_health: 2
-  bar_movement_drag: 1
+  bar_movement_drag: 3
