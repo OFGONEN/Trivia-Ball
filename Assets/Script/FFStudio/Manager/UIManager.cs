@@ -174,6 +174,7 @@ namespace FFStudio
         {
 			var currentLevel = CurrentLevelData.Instance;
 			level_count_text.text = "Level " + currentLevel.currentLevel_Shown;
+			question_text.text = currentLevel.levelData.question;
 
 			level_information_text.text = "Tap to Start";
 
