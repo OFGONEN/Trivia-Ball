@@ -23,7 +23,7 @@ MonoBehaviour:
   ball_default_power: 1
   ball_default_health: 2
   ball_currency: {x: 3, y: 6}
-  ball_currency_textSize: {x: 0.5040531, y: 1.2455785}
+  ball_currency_textSize: {x: 1.0019875, y: 2}
   bar_width: 3
   ai_answer_cooldown: 2
   keyboard_max_characterLimit: 20
