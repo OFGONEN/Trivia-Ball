@@ -89,13 +89,13 @@ public class Ball : MonoBehaviour
     public void Launch()
     {
 		ball_rigidbody.AddForce( transform.forward * GameSettings.Instance.ball_launch_power, ForceMode.Impulse);
-        ball_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.ball_launch_power_torque, ForceMode.Impulse );
+        // ball_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.ball_launch_power_torque, ForceMode.Impulse );
 	}
 
 	public void OnCollision( Collision collision )
 	{
 		tween_punchScale.Recycle(
-			transform_gfx.DOPunchScale( GameSettings.Instance.ball_punchScale * Vector3.one,
+			transform_gfx.DOPunchScale( GameSettings.Instance.ball_punchScale,
 			GameSettings.Instance.ball_punchScale_duration )
 			.SetEase( GameSettings.Instance.ball_punchScale_ease )
 		);

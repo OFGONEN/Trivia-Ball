@@ -25,7 +25,7 @@ namespace FFStudio
 		[ BoxGroup( "Dsgn Ball" ) ] public Vector3 ball_spawn_offset;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_targetColor;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power;
-		[ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power_torque;
+		// [ BoxGroup( "Dsgn Ball" ) ] public float ball_launch_power_torque;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_player_color;
 		[ BoxGroup( "Dsgn Ball" ) ] public Color ball_enemy_color;
 		[ BoxGroup( "Dsgn Ball" ) ] public float ball_default_power;
@@ -43,7 +43,7 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" )        ] public Vector3 ball_spawn_punchScale_strength = Vector3.one;
 		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
 		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
-		[ FoldoutGroup( "Ball" )        ] public float ball_punchScale;
+		[ FoldoutGroup( "Ball" )        ] public Vector3 ball_punchScale;
 		[ FoldoutGroup( "Ball" )        ] public float ball_punchScale_duration;
 		[ FoldoutGroup( "Ball" )        ] public Ease ball_punchScale_ease;
 
