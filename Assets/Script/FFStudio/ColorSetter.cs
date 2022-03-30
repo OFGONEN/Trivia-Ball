@@ -17,6 +17,7 @@ namespace FFStudio
 
 		private Renderer _renderer;
 		private MaterialPropertyBlock propertyBlock;
+		private TrailRenderer trailRenderer;
 #endregion
 
 #region Properties
@@ -26,6 +27,7 @@ namespace FFStudio
 		private void Awake()
 		{
 			_renderer = GetComponent<Renderer>();
+			trailRenderer = GetComponentInChildren< TrailRenderer >();
 
 			propertyBlock = new MaterialPropertyBlock();
 		}
@@ -45,6 +47,8 @@ namespace FFStudio
 			_renderer.GetPropertyBlock( propertyBlock );
 			propertyBlock.SetColor( SHADER_ID_COLOR, color );
 			_renderer.SetPropertyBlock( propertyBlock );
+
+			trailRenderer.startColor = color;
 		}
 #endregion
 
