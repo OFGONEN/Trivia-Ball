@@ -16,7 +16,7 @@ MonoBehaviour:
   ball_spawn_letterCount: 1
   ball_spawn_offset: {x: 0, y: 0.175, z: 0}
   ball_targetColor: {r: 0, g: 0, b: 0, a: 1}
-  ball_launch_power: 3.5
+  ball_launch_power: 6
   ball_launch_power_torque: 1
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
