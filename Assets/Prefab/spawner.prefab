@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 1282589663198690164}
   - component: {fileID: -1039657871834480323}
   - component: {fileID: 9059924495595786272}
+  - component: {fileID: 1478586987610341713}
   m_Layer: 0
   m_Name: spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1282589663198690164
 Transform:
@@ -47,6 +48,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
   notifier_bar_transform: {fileID: 11400000, guid: 8dbc6f0e6cb188a46a491dc3804b3868, type: 2}
+  onSingleBallSpawn:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1478586987610341713}
+        m_TargetAssemblyTypeName: FFStudio.ParticleSpawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9059924495595786272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,6 +127,24 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+--- !u!114 &1478586987610341713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1495509203608245198}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f753b2c2b78147c181c65650f11a67d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particleDatas:
+  - particle_event: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
+    alias: 
+    parent: 0
+    offset: {x: 0, y: -0.2, z: 0}
+    size: 1
 --- !u!1001 &6174804654221721109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -184,7 +218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: eb96a5eff44476349b2ec5b9ee76e340, type: 3}
       propertyPath: m_StaticEditorFlags
-      value: 2147483647
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb96a5eff44476349b2ec5b9ee76e340, type: 3}

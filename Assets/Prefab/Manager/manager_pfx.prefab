@@ -47,5 +47,11 @@ MonoBehaviour:
     gameEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
   listener_pfx_spawn_random:
     gameEvent: {fileID: 11400000, guid: 0e566b9988b734020893e6b1049f50df, type: 2}
-  pools_pfx: []
+  pools_pfx:
+  - {fileID: 11400000, guid: 7d130d0159d6571438b51312e207d4ed, type: 2}
+  - {fileID: 11400000, guid: a47e7eba3c95fdc48a004331089d8c01, type: 2}
+  - {fileID: 11400000, guid: 20b86b7a0ba72fb41b63db3a70159643, type: 2}
+  - {fileID: 11400000, guid: 0bba821017d419f4f97bc02d3f9b68f8, type: 2}
+  - {fileID: 11400000, guid: 0d39aa44089a41d4492a920fdda993e5, type: 2}
+  - {fileID: 11400000, guid: 32bc21bef9dbe7d4d840694ad768a571, type: 2}
   pools_pfx_random: []

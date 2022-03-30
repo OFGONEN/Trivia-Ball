@@ -1,8 +1,7 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using FFStudio;
 using Sirenix.OdinInspector;
 
@@ -12,6 +11,8 @@ public class Ball : MonoBehaviour
     [ BoxGroup( "Shared" ) ] public SharedIntNotifier notifier_currency;
     [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
     [ BoxGroup( "Shared" ) ] public Pool_UIPopUpText pool_popUpText;
+	public UnityEvent onDespawn_forPlayer;
+	public UnityEvent onDespawn_forEnemy;
 
     // Private Fields \\
     private int ball_health;
@@ -68,7 +69,7 @@ public class Ball : MonoBehaviour
         ball_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.ball_launch_power_torque, ForceMode.Impulse );
 	}
 
-    public void OnCollision_Bar( Bar bar )
+    public bool OnCollision_Bar( Bar bar )
     {
 		if( ball_currency )
 		{
@@ -90,8 +91,16 @@ public class Ball : MonoBehaviour
 
 		bar.Push( ball_direction * ball_power );
 
-        if( ball_health_current <= 0 )
-            DeSpawn();
+		if( ball_health_current <= 0 )
+		{
+			DeSpawn();
+			if( ball_currency )
+				onDespawn_forPlayer.Invoke();
+			else
+				onDespawn_forEnemy.Invoke();
+		}
+
+		return ball_currency;
 	}
 
     public void LevelCompleteResponse()
@@ -108,7 +117,7 @@ public class Ball : MonoBehaviour
     {
 		ball_rigidbody.velocity = Vector3.zero;
 		ball_rigidbody.angularVelocity = Vector3.zero;
-
+		
 		pool_ball.ReturnEntity( this );
 	}
 #endregion

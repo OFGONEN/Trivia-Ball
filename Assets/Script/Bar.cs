@@ -1,7 +1,5 @@
 /* Created by and for usage of FF Studios (2021). */
 
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using FFStudio;
 using Sirenix.OdinInspector;
@@ -9,11 +7,13 @@ using Sirenix.OdinInspector;
 public class Bar : MonoBehaviour
 {
 #region Fields
+	public ParticleSpawnEvent particleSpawnEvent;
+	public string pfx_alias_forPlayer;
+	public string pfx_alias_forEnemy;
 
 // Private Fields \\
     [ ShowInInspector, ReadOnly ] private float movement_force;
     [ ShowInInspector, ReadOnly ] private float movement_drag;
-
 
 // Delegate
     private UnityMessage updateMethod;
@@ -51,7 +51,12 @@ public class Bar : MonoBehaviour
 		var ball = collision.gameObject.GetComponentInParent< Ball >();
 
 		if( ball ) //todo remove this if bot balls are removed from project
-			ball.OnCollision_Bar( this );
+		{
+			var ballBelongsToPlayer = ball.OnCollision_Bar( this );
+			particleSpawnEvent.Raise( ballBelongsToPlayer ? pfx_alias_forPlayer : pfx_alias_forEnemy,
+									  collision.transform.position.SetZ( ( transform.position.z + collision.transform.position.z ) / 2 ),
+									  transform );
+		}
 	}
 
     public void Push( float force )

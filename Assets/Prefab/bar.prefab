@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4bf398410a7e7f4fa347ff855cce9f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleSpawnEvent: {fileID: 11400000, guid: fe240f220ab36cc44923227184f9c2a7, type: 2}
+  pfx_alias_forPlayer: ball_impact_player
+  pfx_alias_forEnemy: ball_impact_enemy
 --- !u!54 &3366871972937511658
 Rigidbody:
   m_ObjectHideFlags: 0
