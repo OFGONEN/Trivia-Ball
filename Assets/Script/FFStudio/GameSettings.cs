@@ -1,6 +1,7 @@
 ﻿/* Created by and for usage of FF Studios (2021). */
 
 using UnityEngine;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 namespace FFStudio
@@ -42,6 +43,9 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" )        ] public Vector3 ball_spawn_punchScale_strength = Vector3.one;
 		[ FoldoutGroup( "Ball" )        ] public float ball_player_direction;
 		[ FoldoutGroup( "Ball" )        ] public float ball_enemy_direction;
+		[ FoldoutGroup( "Ball" )        ] public float ball_punchScale;
+		[ FoldoutGroup( "Ball" )        ] public float ball_punchScale_duration;
+		[ FoldoutGroup( "Ball" )        ] public Ease ball_punchScale_ease;
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;

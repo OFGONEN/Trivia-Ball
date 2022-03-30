@@ -33,6 +33,9 @@ MonoBehaviour:
   ball_spawn_punchScale_strength: {x: 0.5, y: 0.3, z: -0.2}
   ball_player_direction: 1
   ball_enemy_direction: -1
+  ball_punchScale: 0.1
+  ball_punchScale_duration: 0.5
+  ball_punchScale_ease: 25
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1
   ui_Entity_wait_duration: 0.75

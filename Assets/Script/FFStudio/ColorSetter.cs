@@ -10,6 +10,7 @@ namespace FFStudio
 	{
 #region Fields (Inspector Interface)
 		[ TitleGroup( "Setup" ), SerializeField ] private Color color;
+		[ TitleGroup( "Setup" ), SerializeField ] private TrailRenderer trailRenderer;
 #endregion
 
 #region Fields (Private)
@@ -17,7 +18,6 @@ namespace FFStudio
 
 		private Renderer _renderer;
 		private MaterialPropertyBlock propertyBlock;
-		private TrailRenderer trailRenderer;
 #endregion
 
 #region Properties
@@ -27,7 +27,6 @@ namespace FFStudio
 		private void Awake()
 		{
 			_renderer = GetComponent<Renderer>();
-			trailRenderer = GetComponentInChildren< TrailRenderer >();
 
 			propertyBlock = new MaterialPropertyBlock();
 		}

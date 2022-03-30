@@ -3,14 +3,20 @@
 using UnityEngine;
 using UnityEngine.Events;
 using FFStudio;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 
 public class Ball : MonoBehaviour
 {
 #region Fields
-    [ BoxGroup( "Shared" ) ] public SharedIntNotifier notifier_currency;
-    [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
-    [ BoxGroup( "Shared" ) ] public Pool_UIPopUpText pool_popUpText;
+[ TitleGroup( "Shared" ) ]
+    public SharedIntNotifier notifier_currency;
+    public Pool_Ball pool_ball;
+    public Pool_UIPopUpText pool_popUpText;
+
+[ TitleGroup( "Setup" ) ] 
+	public Transform transform_gfx;
+	public TrailRenderer trailRenderer;
 	public UnityEvent onDespawn_forPlayer;
 	public UnityEvent onDespawn_forEnemy;
 
@@ -27,17 +33,31 @@ public class Ball : MonoBehaviour
     private Rigidbody ball_rigidbody;
     private Collider ball_collider;
     private ColorSetter ball_color_setter;
+
+	private RecycledTween tween_punchScale = new RecycledTween();
+
+	private Vector3 ball_start_Size;
 #endregion
 
 #region Properties
 #endregion
 
 #region Unity API
+	private void OnDisable()
+	{
+		tween_punchScale.Kill();
+		trailRenderer.enabled = false;
+	}
+
     private void Awake()
     {
-        ball_rigidbody    = GetComponent< Rigidbody >();
+		ball_rigidbody    = GetComponent< Rigidbody >();
         ball_collider     = GetComponent< Collider >();
         ball_color_setter = GetComponentInChildren< ColorSetter >();
+
+		ball_start_Size = transform_gfx.localScale;
+
+		trailRenderer.enabled = false;
 	}
 #endregion
 
@@ -45,6 +65,9 @@ public class Ball : MonoBehaviour
     public void Spawn( bool currency, Vector3 position, float direction, float power, int health, Color color )
     {
 		gameObject.SetActive( true );
+		trailRenderer.Clear();
+		trailRenderer.enabled = true;
+		transform_gfx.localScale = ball_start_Size;
 
 		transform.position    = position;
 		transform.eulerAngles = Vector3.forward * direction;
@@ -67,6 +90,15 @@ public class Ball : MonoBehaviour
     {
 		ball_rigidbody.AddForce( transform.forward * GameSettings.Instance.ball_launch_power, ForceMode.Impulse);
         ball_rigidbody.AddTorque( Random.onUnitSphere * GameSettings.Instance.ball_launch_power_torque, ForceMode.Impulse );
+	}
+
+	public void OnCollision( Collision collision )
+	{
+		tween_punchScale.Recycle(
+			transform_gfx.DOPunchScale( GameSettings.Instance.ball_punchScale * Vector3.one,
+			GameSettings.Instance.ball_punchScale_duration )
+			.SetEase( GameSettings.Instance.ball_punchScale_ease )
+		);
 	}
 
     public bool OnCollision_Bar( Bar bar )

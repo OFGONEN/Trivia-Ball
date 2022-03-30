@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 8691965256846491226}
   - component: {fileID: -4782656036624149253}
   - component: {fileID: 426592243348256395}
+  - component: {fileID: 4529592691693388112}
   m_Layer: 31
   m_Name: ball
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 3652264884503744130}
   - {fileID: 5795988672927355645}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -51,6 +53,8 @@ MonoBehaviour:
   notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
   pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
   pool_popUpText: {fileID: 11400000, guid: eaaacbd90b1464ad2b2a3a962a8a84b2, type: 2}
+  transform_gfx: {fileID: 5795988672927355645}
+  trailRenderer: {fileID: 2200227448869517843}
   onDespawn_forPlayer:
     m_PersistentCalls:
       m_Calls:
@@ -180,6 +184,34 @@ MonoBehaviour:
     parent: 0
     offset: {x: 0, y: 0, z: 0}
     size: 1
+--- !u!114 &4529592691693388112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3881007408196358297}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cd209e93f371934494f5cbe9870d1f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attachedComponent: {fileID: 0}
+  unityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6723235292880310022}
+        m_TargetAssemblyTypeName: Ball, Assembly-CSharp
+        m_MethodName: OnCollision
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4681821476284009451
 GameObject:
   m_ObjectHideFlags: 0
@@ -209,10 +241,9 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
-  m_Children:
-  - {fileID: 3652264884503744130}
+  m_Children: []
   m_Father: {fileID: 6698102139703819530}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6713684097516662528
 MeshFilter:
@@ -277,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0, b: 0, a: 0}
+  trailRenderer: {fileID: 2200227448869517843}
 --- !u!1 &5275901770013241777
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,11 +333,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5275901770013241777}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 0.35}
   m_Children: []
-  m_Father: {fileID: 5795988672927355645}
+  m_Father: {fileID: 6698102139703819530}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &2200227448869517843
