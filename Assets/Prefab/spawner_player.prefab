@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -1039657871834480323, guid: acdbc96471bb2c24391d3c89ad21b31e, type: 3}
+      propertyPath: notifier_ballTarget_transform
+      value: 
+      objectReference: {fileID: 11400000, guid: e9d40e86a28ca1d4b8708d0daf55c40b, type: 2}
     - target: {fileID: 1282589663198690164, guid: acdbc96471bb2c24391d3c89ad21b31e, type: 3}
       propertyPath: m_RootOrder
       value: 0
