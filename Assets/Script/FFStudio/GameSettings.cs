@@ -34,6 +34,9 @@ namespace FFStudio
 		[ BoxGroup( "Game" ), MinMaxSlider( 3, 10 ) ] public Vector2Int ball_currency;
 		[ BoxGroup( "Game" ), MinMaxSlider( 0.25f, 4f ) ] public Vector2 ball_currency_textSize;
         [ BoxGroup( "Game" ) ] public float bar_width;
+        [ BoxGroup( "Game" ) ] public float board_length;
+        [ BoxGroup( "Game" ) ] public float board_reposition_duration;
+        [ BoxGroup( "Game" ) ] public Ease board_reposition_ease;
 		[ BoxGroup( "Game" ) ] public float ai_answer_cooldown;
 		[ BoxGroup( "Game" ) ] public int keyboard_max_characterLimit;
 

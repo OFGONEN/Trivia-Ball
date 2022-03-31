@@ -54,7 +54,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1807348258}
   m_LocalRotation: {x: 0.6427876, y: 0, z: 0, w: 0.7660445}
-  m_LocalPosition: {x: 0, y: 18, z: -8.5}
+  m_LocalPosition: {x: 0, y: 18, z: -6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9044373210199396783}
@@ -127,7 +127,7 @@ MonoBehaviour:
     event_complete:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 11400000, guid: efef06bf257ee27438d6c2aab4936226, type: 2}
+        - m_Target: {fileID: 11400000, guid: b3734d99811dc3545b6a91a2546d6849, type: 2}
           m_TargetAssemblyTypeName: FFStudio.GameEvent, Assembly-CSharp
           m_MethodName: Raise
           m_Mode: 1
