@@ -27,7 +27,7 @@ MonoBehaviour:
   ai_answer_cooldown: 2
   keyboard_max_characterLimit: 20
   ball_spawn_layer: 30
-  ball_spawn_trigger: 1
+  ball_spawn_trigger: 0
   ball_spawn_delay: 0.35
   ball_spawn_punchScale_strength: {x: 0.5, y: 0.3, z: -0.2}
   ball_player_direction: 1

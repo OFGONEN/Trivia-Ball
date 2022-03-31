@@ -85,12 +85,12 @@ public class Ball : MonoBehaviour
 		ball_color_current  = color;
 		ball_color          = color;
 
-		tween_jump.Recycle( transform.DOJump( targetPosition,
+		tween_jump.Recycle( transform.DOJump( targetPosition + GameSettings.Instance.ball_spawn_offset,
 			GameSettings.Instance.ball_jump_power,
 			1,
 			GameSettings.Instance.ball_jump_duration )
-			.SetEase( GameSettings.Instance.ball_jump_ease )
-			.OnComplete( Launch )
+			.SetEase( GameSettings.Instance.ball_jump_ease ),
+			Launch
 		);
 	}
 
