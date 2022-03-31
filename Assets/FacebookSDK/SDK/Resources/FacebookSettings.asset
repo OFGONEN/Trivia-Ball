@@ -16,9 +16,9 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 1237721368721
+  - 652502779193826
   appLabels:
-  - Beni Degistir
+  - Trivia Ball
   cookie: 1
   logging: 1
   status: 1
