@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pool_ball: {fileID: 11400000, guid: febf88e8caf57b54e82c2df99cf262f9, type: 2}
-  notifier_bar_transform: {fileID: 11400000, guid: 8dbc6f0e6cb188a46a491dc3804b3868, type: 2}
+  notifier_ballTarget_transform: {fileID: 0}
   onSingleBallSpawn:
     m_PersistentCalls:
       m_Calls:
@@ -212,6 +212,10 @@ PrefabInstance:
       propertyPath: m_MotionVectors
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: eb96a5eff44476349b2ec5b9ee76e340, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 984e8bdcd93ca064b9912f140a4b8eb1, type: 2}
     - target: {fileID: 919132149155446097, guid: eb96a5eff44476349b2ec5b9ee76e340, type: 3}
       propertyPath: m_Name
       value: envr_spawner
