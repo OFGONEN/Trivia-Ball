@@ -10,7 +10,7 @@ public class Spawner : MonoBehaviour
 {
 #region Fields
     [ BoxGroup( "Shared" ) ] public Pool_Ball pool_ball;
-    [ BoxGroup( "Shared" ) ] public SharedReferenceNotifier notifier_bar_transform;
+    [ BoxGroup( "Shared" ) ] public SharedReferenceNotifier notifier_ballTarget_transform;
     [ BoxGroup( "Shared" ) ] public UnityEvent onSingleBallSpawn;
 
 	private RecycledSequence recycledSequence = new RecycledSequence();
@@ -54,16 +54,14 @@ public class Spawner : MonoBehaviour
 #region Implementation
 	private void SpawnBall( bool currency, float direction, float power, int health, Color color )
 	{
-		var ball = pool_ball.GetEntity();
-		ball.Spawn( currency, transform.position + GameSettings.Instance.ball_spawn_offset, direction, power, health, color );
-
-		var position_bar = ( notifier_bar_transform.sharedValue as Transform ).position;
+		var targetTransform = notifier_ballTarget_transform.sharedValue as Transform;
+		var targetTransform_position = targetTransform.position;
 
 		var offset = GameSettings.Instance.bar_width / 2f * Vector3.right;
-		var target = Vector3.Lerp( position_bar - offset, position_bar + offset, Random.Range( 0f, 1f ) );
+		var target = Vector3.Lerp( targetTransform_position - offset, targetTransform_position + offset, Random.Range( 0f, 1f ) );
 
-		ball.transform.LookAtAxis( target, Vector3.up );
-		ball.Launch();
+		var ball = pool_ball.GetEntity();
+		ball.Spawn( target, currency, transform.position, direction, power, health, color );
 	}
 #endregion
 

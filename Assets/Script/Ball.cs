@@ -34,8 +34,8 @@ public class Ball : MonoBehaviour
     private Collider ball_collider;
     private ColorSetter ball_color_setter;
 
+	private RecycledTween tween_jump = new RecycledTween();
 	private RecycledTween tween_punchScale = new RecycledTween();
-
 	private Vector3 ball_start_Size;
 #endregion
 
@@ -62,15 +62,15 @@ public class Ball : MonoBehaviour
 #endregion
 
 #region API
-    public void Spawn( bool currency, Vector3 position, float direction, float power, int health, Color color )
+    public void Spawn( Vector3 targetPosition, bool currency, Vector3 spawnPosition, float direction, float power, int health, Color color )
     {
 		gameObject.SetActive( true );
 		trailRenderer.Clear();
 		trailRenderer.enabled = true;
 		transform_gfx.localScale = ball_start_Size;
 
-		transform.position    = position;
-		transform.eulerAngles = Vector3.forward * direction;
+		transform.position    = spawnPosition + GameSettings.Instance.ball_spawn_offset;
+		transform.LookAtAxis( targetPosition, Vector3.up );
 
 		gameObject.layer        = GameSettings.Instance.ball_spawn_layer;
 		ball_collider.isTrigger = GameSettings.Instance.ball_spawn_trigger;
@@ -84,6 +84,14 @@ public class Ball : MonoBehaviour
 		ball_direction      = direction;
 		ball_color_current  = color;
 		ball_color          = color;
+
+		tween_jump.Recycle( transform.DOJump( targetPosition,
+			GameSettings.Instance.ball_jump_power,
+			1,
+			GameSettings.Instance.ball_jump_duration )
+			.SetEase( GameSettings.Instance.ball_jump_ease )
+			.OnComplete( Launch )
+		);
 	}
 
     public void Launch()

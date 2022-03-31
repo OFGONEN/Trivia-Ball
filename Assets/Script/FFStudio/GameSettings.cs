@@ -46,6 +46,9 @@ namespace FFStudio
 		[ FoldoutGroup( "Ball" )        ] public Vector3 ball_punchScale;
 		[ FoldoutGroup( "Ball" )        ] public float ball_punchScale_duration;
 		[ FoldoutGroup( "Ball" )        ] public Ease ball_punchScale_ease;
+		[ FoldoutGroup( "Ball" )        ] public float ball_jump_power;
+		[ FoldoutGroup( "Ball" )        ] public float ball_jump_duration;
+		[ FoldoutGroup( "Ball" )        ] public Ease ball_jump_ease;
 
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_height;
         [ FoldoutGroup( "Debug" ) ] public float debug_ui_text_float_duration;
