@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7a21fc555af4466bfd2a670aa1f56e, type: 3}
+  m_Name: incremental_power
+  m_EditorClassIdentifier: 
+  notifier_currency: {fileID: 11400000, guid: 52e8939fd664f415f82de722834434c2, type: 2}
+  incremental_name: power
+  incremental_default: 1
+  incremeantal_data:
+  - incremental_cost: 100
+    incremental_value_text: hit power
+    incremental_value: 0.01

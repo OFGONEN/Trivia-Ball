@@ -13,6 +13,7 @@ namespace FFStudio
         [ BoxGroup( "Setup" ), SerializeField ]
         protected SharedDataNotifierType sharedDataNotifier;
 
+        [ BoxGroup( "Setup" ), SerializeField ]
         protected TextMeshProUGUI ui_Text; 
 #endregion
 
@@ -29,7 +30,7 @@ namespace FFStudio
 
         private void Awake()
         {
-            ui_Text = GetComponentInChildren< TextMeshProUGUI >();
+            // ui_Text = GetComponentInChildren< TextMeshProUGUI >();
         }
 #endregion
 

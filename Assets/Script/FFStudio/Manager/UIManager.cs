@@ -4,32 +4,41 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using TMPro;
+using Sirenix.OdinInspector;
 
 namespace FFStudio
 {
     public class UIManager : MonoBehaviour
     {
 #region Fields
-        [ Header( "Event Listeners" ) ]
-        public EventListenerDelegateResponse levelLoadedResponse;
-        public EventListenerDelegateResponse levelCompleteResponse;
-        public EventListenerDelegateResponse levelFailResponse;
-        public EventListenerDelegateResponse tapInputListener;
+        [ BoxGroup( "UI Elements" ) ] public Image question_image;
+        [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
+        [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
+        [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
+        [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_left;
+        [ BoxGroup( "UI Elements" ) ] public IncrementalButton incremental_right;
+        [ BoxGroup( "UI Elements" ) ] public Button incremental_pass;
 
-        [ Header( "UI Elements" ) ]
-        public UI_Patrol_Scale level_loadingBar_Scale;
-        public TextMeshProUGUI level_count_text;
-        public TextMeshProUGUI level_information_text;
-        public UI_Patrol_Scale level_information_text_Scale;
-        public Image loadingScreenImage;
-        public Image foreGroundImage;
-        public RectTransform tutorialObjects;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelLoadedResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelCompleteResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse levelFailResponse;
+        [ FoldoutGroup( "Base - Listeners" ) ] public EventListenerDelegateResponse tapInputListener;
 
-        [ Header( "Fired Events" ) ]
-        public GameEvent levelRevealedEvent;
-        public GameEvent loadNewLevelEvent;
-        public GameEvent resetLevelEvent;
-        public ElephantLevelEvent elephantLevelEvent;
+        [ FoldoutGroup( "Base - UI" ) ] public UI_Patrol_Scale level_loadingBar_Scale;
+        [ FoldoutGroup( "Base - UI" ) ] public TextMeshProUGUI level_count_text;
+        [ FoldoutGroup( "Base - UI" ) ] public TextMeshProUGUI level_information_text;
+        [ FoldoutGroup( "Base - UI" ) ] public UI_Patrol_Scale level_information_text_Scale;
+        [ FoldoutGroup( "Base - UI" ) ] public Image loadingScreenImage;
+        [ FoldoutGroup( "Base - UI" ) ] public Image foreGroundImage;
+        [ FoldoutGroup( "Base - UI" ) ] public RectTransform tutorialObjects;
+
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent levelRevealedEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent loadNewLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public GameEvent resetLevelEvent;
+        [ FoldoutGroup( "Base - Fired Events" ) ] public ElephantLevelEvent elephantLevelEvent;
+
+        private RecycledSequence answerBox_enemy_sequence = new RecycledSequence();
+		private RectTransform incremental_pass_transform;
 #endregion
 
 #region Unity API
@@ -57,16 +66,63 @@ namespace FFStudio
             tapInputListener.response      = ExtensionMethods.EmptyMethod;
 
 			level_information_text.text = "Tap to Start";
-        }
+
+			question_image.color = question_image.color.SetAlpha( 0 );
+			question_text.color = question_text.color.SetAlpha( 0 );
+			question_text.text   = string.Empty;
+
+			incremental_pass_transform = incremental_pass.targetGraphic.rectTransform;
+			incremental_pass.interactable = false;
+		}
+#endregion
+
+#region API
+        public void TweenEnemyBox()
+        {
+			answerBox_enemy_sequence.Kill();
+
+			var sequence = answerBox_enemy_sequence.Recycle();
+
+			sequence.Append( answerBox_enemy.DOAnchorPosX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+			sequence.AppendInterval( GameSettings.Instance.ai_answer_cooldown );
+			sequence.Append( answerBox_enemy.DOAnchorPosX( answerBox_enemy.sizeDelta.x, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+		}
+
+        public void IncrementalSelected()
+        {
+			var passButtonTarget = -( incremental_pass_transform.sizeDelta.y + incremental_pass_transform.anchoredPosition.y );
+			incremental_pass.interactable = false;
+
+			var sequence = DOTween.Sequence();
+
+			sequence.Append( incremental_left.GoDown() )
+ 					.Join( incremental_right.GoDown() )
+					.Join( incremental_pass_transform.DOAnchorPosY( passButtonTarget, GameSettings.Instance.ui_Entity_Move_TweenDuration ) )
+					.AppendCallback( levelRevealedEvent.Raise )
+					.Append( question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( answerBox_player.DOMoveX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+
+			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
+			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
+			elephantLevelEvent.Raise();
+		}
 #endregion
 
 #region Implementation
         private void LevelLoadedResponse()
         {
+			var levelData = CurrentLevelData.Instance.levelData;
+			question_text.text = levelData.question;
+
 			var sequence = DOTween.Sequence()
 								.Append( level_loadingBar_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
-								.AppendCallback( () => tapInputListener.response = StartLevel );
+								.Append( loadingScreenImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) );
+
+			                    if( levelData.showIncremantal )
+								    sequence.AppendCallback( () => tapInputListener.response = ShowIncremental );
+                                else
+								    sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
 			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
 
@@ -81,7 +137,10 @@ namespace FFStudio
 
 			level_information_text.text = "Completed \n\n Tap to Continue";
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( answerBox_player.DOMoveX( -answerBox_player.sizeDelta.x, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = LoadNewLevel );
@@ -98,7 +157,10 @@ namespace FFStudio
 			// Tween tween = null;
 			level_information_text.text = "Level Failed \n\n Tap to Continue";
 
-			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+			sequence.Append( question_image.DOFade( 0 , GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( answerBox_player.DOMoveX( -answerBox_player.sizeDelta.x, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( question_text.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+                    .Join( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
                     // .Append( tween ) // TODO: UIElements tween.
 					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
 					.AppendCallback( () => tapInputListener.response = Resetlevel );
@@ -110,7 +172,9 @@ namespace FFStudio
 
         private void NewLevelLoaded()
         {
-			level_count_text.text = "Level " + CurrentLevelData.Instance.currentLevel_Shown;
+			var currentLevel = CurrentLevelData.Instance;
+			level_count_text.text = "Level " + currentLevel.currentLevel_Shown;
+			question_text.text = currentLevel.levelData.question;
 
 			level_information_text.text = "Tap to Start";
 
@@ -120,8 +184,12 @@ namespace FFStudio
 
 			sequence.Append( foreGroundImage.DOFade( 0.5f, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
 					// .Append( tween ) // TODO: UIElements tween.
-					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
-					.AppendCallback( () => tapInputListener.response = StartLevel );
+					.Append( level_information_text_Scale.DoScale_Start( GameSettings.Instance.ui_Entity_Scale_TweenDuration ) );
+
+			if( currentLevel.levelData.showIncremantal )
+				sequence.AppendCallback( () => tapInputListener.response = ShowIncremental ); 
+           else
+				sequence.AppendCallback( () => tapInputListener.response = StartLevel );
 
             // elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
             // elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
@@ -131,6 +199,10 @@ namespace FFStudio
 		private void StartLevel()
 		{
 			foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+			question_image.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+			question_text.DOFade( 1, GameSettings.Instance.ui_Entity_Fade_TweenDuration );
+
+			answerBox_player.DOMoveX( 0, GameSettings.Instance.ui_Entity_Move_TweenDuration );
 
 			level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration );
 			level_information_text_Scale.Subscribe_OnComplete( levelRevealedEvent.Raise );
@@ -142,6 +214,30 @@ namespace FFStudio
 			elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
 			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
 			elephantLevelEvent.Raise();
+		}
+
+        private void ShowIncremental()
+        {
+			tutorialObjects.gameObject.SetActive( false );
+			tapInputListener.response = ExtensionMethods.EmptyMethod;
+
+			var passButtonTarget = -incremental_pass_transform.anchoredPosition.y - incremental_pass_transform.sizeDelta.y;
+			incremental_pass.interactable = true;
+
+			var sequence = DOTween.Sequence();
+
+			sequence.Append( foreGroundImage.DOFade( 0, GameSettings.Instance.ui_Entity_Fade_TweenDuration ) )
+					.Join( level_information_text_Scale.DoScale_Target( Vector3.zero, GameSettings.Instance.ui_Entity_Scale_TweenDuration ) )
+					.Append( incremental_left.GoUp() )
+ 					.Join( incremental_right.GoUp() )
+ 					.Join( incremental_pass_transform.DOAnchorPosY( passButtonTarget, GameSettings.Instance.ui_Entity_Move_TweenDuration ) );
+
+			if( !incremental_left.CanAfford() && !incremental_right.CanAfford() )
+			{
+				incremental_pass.interactable = false;
+				sequence.AppendInterval( GameSettings.Instance.ui_Entity_wait_duration );
+				sequence.AppendCallback( IncrementalSelected );
+			}
 		}
 
 		private void LoadNewLevel()

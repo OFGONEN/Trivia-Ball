@@ -12,12 +12,17 @@ namespace FFStudio
 		public GameSettings gameSettings;
 		public CurrentLevelData currentLevelData;
 
+		[ BoxGroup( "Shared" ) ] public SharedIntNotifier notifier_currency;
 
 		[ BoxGroup( "Pool" ) ] public Pool_UIPopUpText pool_UIPopUpText;
+		[ BoxGroup( "Pool" ) ] public Pool_Ball pool_ball;
 
 		private void Awake()
 		{
-			pool_UIPopUpText.InitPool( transform, true );
+			pool_UIPopUpText.InitPool( transform, false );
+			pool_ball.InitPool( transform, false );
+
+			notifier_currency.SetValue_NotifyAlways( PlayerPrefs.GetInt( "currency", 0 ) );
 		}
 #endregion
 	}

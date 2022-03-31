@@ -14,3 +14,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
+  showIncremantal: 0
+  incremental_index: 0
+  currency_cofactor: 1
+  question: "Name a color in the rainbow\r"
+  question_answers:
+  - red
+  - green
+  - turquoise
+  - indigo
+  - orange
+  - yellow
+  - blue
+  ai_answer_rate: {x: 4.317069, y: 6.731486}
+  ai_ball_power: 0.5
+  ai_ball_health: 1
+  bar_movement_drag: 3

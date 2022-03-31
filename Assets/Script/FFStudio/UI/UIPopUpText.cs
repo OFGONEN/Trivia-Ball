@@ -37,7 +37,7 @@ namespace FFStudio
 			ui_float.DoFloat( GameSettings.Instance.ui_PopUp_height,
 				GameSettings.Instance.ui_PopUp_duration );
 
-			ui_text.DoFade( 0, GameSettings.Instance.ui_PopUp_duration );
+			// ui_text.DoFade( 0, GameSettings.Instance.ui_PopUp_duration );
 
 			ui_float.UI_RectTransform.localScale = ui_start_scale * size;
 
