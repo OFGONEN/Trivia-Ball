@@ -9,7 +9,7 @@ QualitySettings:
   - serializedVersion: 2
     name: Very Low
     pixelLightCount: 0
-    shadows: 0
+    shadows: 1
     shadowResolution: 0
     shadowProjection: 1
     shadowCascades: 1
@@ -42,4 +42,7 @@ QualitySettings:
     resolutionScalingFixedDPIFactor: 1
     customRenderPipeline: {fileID: 0}
     excludedTargetPlatforms: []
-  m_PerPlatformDefaultQuality: {}
+  m_PerPlatformDefaultQuality:
+    Android: 0
+    Standalone: 0
+    iPhone: 0
