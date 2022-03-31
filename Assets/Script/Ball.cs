@@ -103,7 +103,8 @@ public class Ball : MonoBehaviour
 	public void OnCollision( Collision collision )
 	{
 		transform_gfx.localScale = ball_start_Size;
-		
+		transform_gfx.forward = collision.contacts[ 0 ].normal;
+
 		tween_punchScale.Recycle(
 			transform_gfx.DOPunchScale( GameSettings.Instance.ball_punchScale,
 			GameSettings.Instance.ball_punchScale_duration )
