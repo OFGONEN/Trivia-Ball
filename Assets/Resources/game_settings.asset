@@ -24,7 +24,7 @@ MonoBehaviour:
   ball_currency: {x: 3, y: 6}
   ball_currency_textSize: {x: 2.2626352, y: 3.020758}
   bar_width: 3
-  board_length: 10
+  board_length: 7
   board_reposition_duration: 0.5
   board_reposition_ease: 1
   ai_answer_cooldown: 2
