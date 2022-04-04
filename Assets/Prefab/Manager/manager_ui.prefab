@@ -804,23 +804,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - eventListener:
-      gameEvent: {fileID: 11400000, guid: 35cadf52d1fbf0548a15e7b1be045a01, type: 2}
-    unityEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 124199665187945367}
-          m_TargetAssemblyTypeName: FFStudio.UIManager, Assembly-CSharp
-          m_MethodName: FlashForeGround
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!114 &124199663899937131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,7 +1545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8259527322604471762
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1811,7 +1794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4529302401331136127
 RectTransform:
   m_ObjectHideFlags: 0
