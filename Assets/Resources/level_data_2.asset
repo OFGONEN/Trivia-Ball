@@ -17,18 +17,55 @@ MonoBehaviour:
   showIncremantal: 0
   incremental_index: 0
   currency_cofactor: 1
-  question: "Name a gaming console\r"
+  question: "Name a country in Europe\r"
   question_answers:
-  - sega
-  - atari
-  - nintendo
-  - playstation
-  - gameboy
-  - xbox
-  - mastersystem
-  - colecovision
-  - odyssey
-  ai_answer_rate: {x: 3.8308291, y: 6.731486}
-  ai_ball_power: 0.5
-  ai_ball_health: 1
-  bar_movement_drag: 3
+  - russia
+  - germany
+  - unitedkingdom
+  - france
+  - italy
+  - spain
+  - ukraine
+  - poland
+  - romania
+  - netherlands
+  - belgium
+  - czechia
+  - greece
+  - turkey
+  - portugal
+  - sweden
+  - hungary
+  - belarus
+  - uustria
+  - serbia
+  - switzerland
+  - bulgaria
+  - denmark
+  - finland
+  - slovakia
+  - norway
+  - ireland
+  - croatia
+  - moldova
+  - bosnia
+  - herzegovina
+  - albania
+  - lithuania
+  - northmacedonia
+  - slovenia
+  - latvia
+  - estonia
+  - montenegro
+  - luxembourg
+  - malta
+  - iceland
+  - andorra
+  - monaco
+  - liechtenstein
+  - sanmarino
+  - holysee
+  ai_answer_rate: {x: 3.010299, y: 6.731486}
+  ai_ball_power: 1
+  ai_ball_health: 2
+  bar_movement_drag: 7

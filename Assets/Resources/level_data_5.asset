@@ -14,19 +14,69 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  showIncremantal: 0
+  showIncremantal: 1
   incremental_index: 0
-  currency_cofactor: 1
-  question: "Name a green fruit\r"
+  currency_cofactor: 2
+  question: "name a car manufacturer\r"
   question_answers:
-  - grape
-  - avocado
-  - gooseberry
-  - apple
-  - kiwi
-  - pear
-  - lime
-  ai_answer_rate: {x: 2.432889, y: 6.731486}
-  ai_ball_power: 0.72
-  ai_ball_health: 1
-  bar_movement_drag: 3
+  - koller
+  - ford
+  - fiat
+  - porsche
+  - imperia
+  - litex
+  - apexmotors
+  - chery
+  - skoda
+  - bugatti
+  - citroen
+  - audi
+  - bmw
+  - mercedesbenz
+  - mercedes
+  - opel
+  - alfaromeo
+  - ducati
+  - ferrari
+  - lamborghini
+  - maserati
+  - pagani
+  - acura
+  - honda
+  - isuzu
+  - kawasaki
+  - lexus
+  - mazda
+  - mitsubishi
+  - nissan
+  - subaru
+  - renault
+  - dacia
+  - lada
+  - hyundai
+  - kia
+  - tata
+  - ssanyong
+  - seat
+  - koenigsegg
+  - scania
+  - volvo
+  - tofas
+  - bmc
+  - bentley
+  - volkswagen
+  - astonmartin
+  - jaguar
+  - mclaren
+  - landrover
+  - rangerover
+  - cadillac
+  - chevrolet
+  - chrysler
+  - dodge
+  - jeep
+  - lincoln
+  ai_answer_rate: {x: 2.4668906, y: 6.731486}
+  ai_ball_power: 1.13
+  ai_ball_health: 2
+  bar_movement_drag: 5

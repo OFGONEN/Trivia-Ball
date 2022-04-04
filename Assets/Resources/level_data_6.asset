@@ -14,27 +14,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scene_index: 1
   scene_overrideAsActiveScene: 0
-  showIncremantal: 1
+  showIncremantal: 0
   incremental_index: 0
   currency_cofactor: 1
-  question: "Name a video game genre\r"
+  question: "name a pokemon\r"
   question_answers:
-  - fps
-  - mmorpg
-  - rpg
-  - rts
-  - action
-  - horror
-  - sports
-  - shooter
-  - racing
-  - adventure
-  - fighting
-  - puzzle
-  - roleplaying
-  - simulation
-  - strategy
-  ai_answer_rate: {x: 2.5527515, y: 6.731486}
-  ai_ball_power: 0.88
+  - pikachu
+  - mew
+  - abra
+  - alakazam
+  - arbok
+  - arcanine
+  - blastoise
+  - bulbasaur
+  - butterfree
+  - caterpie
+  - charizard
+  - charmeleon
+  - dragonite
+  - dratini
+  - diglett
+  - eevee
+  - geodude
+  - growlithe
+  - hitmonchan
+  - ivysaur
+  - jigglypuff
+  - jynx
+  - kadabra
+  - lapras
+  - magikarp
+  - magmar
+  - onix
+  - pidgeot
+  - pidgeotto
+  - ponyta
+  - raichu
+  - rapidash
+  - sandshrew
+  - scyther
+  - snorlax
+  - togepi
+  - wartortle
+  - weezing
+  - zapdos
+  - zubat
+  ai_answer_rate: {x: 2.975455, y: 6.731486}
+  ai_ball_power: 0.92
   ai_ball_health: 2
   bar_movement_drag: 6

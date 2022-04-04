@@ -17,16 +17,31 @@ MonoBehaviour:
   showIncremantal: 1
   incremental_index: 0
   currency_cofactor: 1
-  question: "Name a continent\r"
+  question: "name a batman character\r"
   question_answers:
-  - asia
-  - africa
-  - europe
-  - australia
-  - antarctica
-  - northamerica
-  - southamerica
-  ai_answer_rate: {x: 2.5527515, y: 6.2620296}
-  ai_ball_power: 0.6
-  ai_ball_health: 1
+  - batman
+  - jamesgordon
+  - dickgrayson
+  - alfredpennyworth
+  - joker
+  - timdrake
+  - catwoman
+  - jasontodd
+  - penguin
+  - twoface
+  - barbaragordon
+  - riddler
+  - scarecrow
+  - brucewayne
+  - kathykane
+  - harleyquinn
+  - lexluthor
+  - bane
+  - robin
+  - nightwing
+  - batgirl
+  - deathstroke
+  ai_answer_rate: {x: 2.5527515, y: 6.731486}
+  ai_ball_power: 0.66
+  ai_ball_health: 2
   bar_movement_drag: 3
