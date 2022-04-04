@@ -63,6 +63,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: spawner_enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 7319531327280256603, guid: acdbc96471bb2c24391d3c89ad21b31e, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3879340301678012106, guid: 8eb724602b0894f7ab7779e05bd4c553, type: 3}
     - target: {fileID: 9059924495595786272, guid: acdbc96471bb2c24391d3c89ad21b31e, type: 3}
       propertyPath: eventPairs.Array.data[0].eventListener.gameEvent
       value: 
