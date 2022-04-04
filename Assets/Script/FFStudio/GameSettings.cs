@@ -40,6 +40,12 @@ namespace FFStudio
 		[ BoxGroup( "Game" ) ] public float ai_answer_cooldown;
 		[ BoxGroup( "Game" ) ] public int keyboard_max_characterLimit;
 
+		[ BoxGroup( "UI Flash Color" ) ] public Color ui_flashColor;
+		[ BoxGroup( "UI Flash Color" ) ] public float ui_flashColor_duration_in;
+		[ BoxGroup( "UI Flash Color" ) ] public float ui_flashColor_duration_out;
+		[ BoxGroup( "UI Flash Color" ) ] public Ease ui_flashColor_ease_in;
+		[ BoxGroup( "UI Flash Color" ) ] public Ease ui_flashColor_ease_out;
+
 		[ FoldoutGroup( "Ball" ), Layer ] public int ball_spawn_layer;
 		[ FoldoutGroup( "Ball" )        ] public bool ball_spawn_trigger;
 		[ FoldoutGroup( "Ball" )        ] public float ball_spawn_delay = 0.2f;
