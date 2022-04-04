@@ -12,6 +12,7 @@ namespace FFStudio
     {
 #region Fields
         [ BoxGroup( "UI Elements" ) ] public Image question_image;
+        [ BoxGroup( "UI Elements" ) ] public Image flash_image;
         [ BoxGroup( "UI Elements" ) ] public TextMeshProUGUI question_text;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_player;
         [ BoxGroup( "UI Elements" ) ] public RectTransform answerBox_enemy;
@@ -107,6 +108,25 @@ namespace FFStudio
 			elephantLevelEvent.elephantEventType = ElephantEvent.LevelStarted;
 			elephantLevelEvent.Raise();
 		}
+
+		public void FlashForeGround( )
+		{
+			var color = GameSettings.Instance.ui_flashColor;
+			var alpha = color.a;
+
+			flash_image.color = color.SetAlpha( 0 );
+
+			var sequence = DOTween.Sequence();
+			sequence.Append( flash_image.DOFade( alpha,
+				GameSettings.Instance.ui_flashColor_duration_in ) 
+				.SetEase( GameSettings.Instance.ui_flashColor_ease_in ) 
+			);
+
+			sequence.Append( flash_image.DOFade( 0, 
+			GameSettings.Instance.ui_flashColor_duration_out )
+			.SetEase( GameSettings.Instance.ui_flashColor_ease_out )
+			);
+		}
 #endregion
 
 #region Implementation
@@ -168,7 +188,8 @@ namespace FFStudio
             elephantLevelEvent.level             = CurrentLevelData.Instance.currentLevel_Shown;
             elephantLevelEvent.elephantEventType = ElephantEvent.LevelFailed;
             elephantLevelEvent.Raise();
-        }
+
+		}
 
         private void NewLevelLoaded()
         {

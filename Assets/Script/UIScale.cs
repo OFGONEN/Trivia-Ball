@@ -16,6 +16,8 @@ public class UIScale : MonoBehaviour
     [ BoxGroup( "Setup" ) ] public Vector3 endSize;
     [ BoxGroup( "Setup" ) ] public float duration;
     [ BoxGroup( "Setup" ) ] public UnityEvent onComplete;
+
+    private RecycledTween scaleTween = new RecycledTween();
 #endregion
 
 #region Properties
@@ -27,9 +29,15 @@ public class UIScale : MonoBehaviour
 #region API
     public void DoScale()
     {
+		scaleTween.Kill();
 		rectTransform.localScale = startSize;
-		rectTransform.DOScale( endSize, duration ).OnComplete( onComplete.Invoke );
+		scaleTween.Recycle( rectTransform.DOScale( endSize, duration ), onComplete.Invoke );
 	}
+
+    public void KillScale()
+    {
+		scaleTween.Kill();
+    }
 #endregion
 
 #region Implementation

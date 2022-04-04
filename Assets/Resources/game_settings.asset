@@ -29,6 +29,11 @@ MonoBehaviour:
   board_reposition_ease: 1
   ai_answer_cooldown: 2
   keyboard_max_characterLimit: 20
+  ui_flashColor: {r: 0, g: 1, b: 0, a: 0.34901962}
+  ui_flashColor_duration_in: 0.15
+  ui_flashColor_duration_out: 0.3
+  ui_flashColor_ease_in: 1
+  ui_flashColor_ease_out: 1
   ball_spawn_layer: 30
   ball_spawn_trigger: 0
   ball_spawn_delay: 0.35
