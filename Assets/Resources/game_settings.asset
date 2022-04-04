@@ -14,25 +14,33 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxLevelCount: 30
   ball_spawn_letterCount: 1
-  ball_spawn_offset: {x: 0, y: 0.33, z: 0}
+  ball_spawn_offset: {x: 0, y: 0.175, z: 0}
   ball_targetColor: {r: 0, g: 0, b: 0, a: 1}
-  ball_launch_power: 3.5
-  ball_launch_power_torque: 1
+  ball_launch_power: 6
   ball_player_color: {r: 0, g: 1, b: 0, a: 1}
   ball_enemy_color: {r: 1, g: 0, b: 0, a: 1}
   ball_default_power: 1
   ball_default_health: 2
   ball_currency: {x: 3, y: 6}
-  ball_currency_textSize: {x: 1.0019875, y: 2}
+  ball_currency_textSize: {x: 2.2626352, y: 3.020758}
   bar_width: 3
+  board_length: 7
+  board_reposition_duration: 0.5
+  board_reposition_ease: 1
   ai_answer_cooldown: 2
   keyboard_max_characterLimit: 20
-  ball_spawn_layer: 2
+  ball_spawn_layer: 30
   ball_spawn_trigger: 0
   ball_spawn_delay: 0.35
   ball_spawn_punchScale_strength: {x: 0.5, y: 0.3, z: -0.2}
   ball_player_direction: 1
   ball_enemy_direction: -1
+  ball_punchScale: {x: 0.5, y: 0.3, z: -0.2}
+  ball_punchScale_duration: 0.15
+  ball_punchScale_ease: 25
+  ball_jump_power: 2
+  ball_jump_duration: 1
+  ball_jump_ease: 1
   debug_ui_text_float_height: 1
   debug_ui_text_float_duration: 1
   ui_Entity_wait_duration: 0.75

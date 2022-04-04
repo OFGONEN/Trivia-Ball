@@ -10,6 +10,7 @@ namespace FFStudio
 	{
 #region Fields (Inspector Interface)
 		[ TitleGroup( "Setup" ), SerializeField ] private Color color;
+		[ TitleGroup( "Setup" ), SerializeField ] private TrailRenderer trailRenderer;
 #endregion
 
 #region Fields (Private)
@@ -45,6 +46,8 @@ namespace FFStudio
 			_renderer.GetPropertyBlock( propertyBlock );
 			propertyBlock.SetColor( SHADER_ID_COLOR, color );
 			_renderer.SetPropertyBlock( propertyBlock );
+
+			trailRenderer.startColor = color;
 		}
 #endregion
 
