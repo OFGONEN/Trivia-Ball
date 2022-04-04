@@ -85,7 +85,10 @@ namespace FFStudio
 				);
 			}
             else
+            {
+				Handheld.Vibrate();
 				event_player_answer_wrong.Raise();
+            }
 		}
 #endregion
 
