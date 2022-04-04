@@ -66,6 +66,29 @@ namespace FFStudio
 			var answer = gameEvent.eventValue;
 			var answer_hash = answer.GetHashCode();
 
+            if( answer == "nextlevel" )
+            {
+				levelCompleted.Raise();
+				return;
+			}
+            else if ( answer == "prevlevel" )
+            {
+				levelFailedEvent.Raise();
+				return;
+			}
+            else if ( answer == "xhealth" )
+            {
+				FFLogger.Log( "Health: " + PlayerPrefs.GetInt( "health" ) );
+				PlayerPrefs.SetInt( "health", PlayerPrefs.GetInt( "health" ) + 1 );
+				FFLogger.Log( "New Health: " + PlayerPrefs.GetInt( "health" ) );
+			}
+            else if ( answer == "xpower" )
+            {
+				FFLogger.Log( "Power: " + PlayerPrefs.GetFloat( "power" ) );
+				PlayerPrefs.SetFloat( "power", PlayerPrefs.GetFloat( "power" ) + 0.5f );
+				FFLogger.Log( "New Power: " + PlayerPrefs.GetFloat( "power" ) );
+            }
+
 			if( CurrentLevelData.Instance.levelData.CheckIfCorrectAnswer( answer_hash ) && !player_answers.ContainsKey( answer_hash ) )
             {
 				player_answers.Add( answer_hash, answer );
